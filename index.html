@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-angular-plugin-pdf" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/17/angular-plugin-pdf/" class="article-date">
+  <time datetime="2017-04-17T08:27:40.000Z" itemprop="datePublished">2017-04-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/AngularJs/">AngularJs</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/17/angular-plugin-pdf/">Angular插件：PDF在线浏览</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>使用情况：本来设计的时候，是想要要用户自己下载PDF在本地查看的，实际使用的时候，IOS用户在下载查看这方面会遇到无法下载的问题。所以把下载查看改为在线浏览。</p>
+<p>优点：PDF的库文件只有在使用这个directive的时候才会请求文件。</p>
+<p>插件的原文地址：<a href="https://github.com/sayanee/angularjs-pdf" target="_blank" rel="external">https://github.com/sayanee/angularjs-pdf</a></p>
+<p>插件文件下载地址：<a href="http://www.zhuoyousheng.cn/wp-content/uploads/2017/04/angular-pdf-ios.zip" target="_blank" rel="external">angular-pdf-ios.rar</a></p>
+<p>使用方法：<br>1. ./index.html<br>引用库文件，其中pdf.worker.js虽然没有引用，但是pdf.js使用的时候会自动调用pdf.worker.js<br>后续补充，IOS9以上的系统上述的方法还是无法加载PDF，需要加上一个兼容适应的JS之后才能使用</p>
+<pre> &lt;script src="lib/compatibility.js"&gt;&lt;/script&gt;
+&lt;script src="lib/pdf.js"&gt;&lt;/script&gt;
+&lt;script src="lib/angular-pdf.min.js"&gt;&lt;/script&gt;</pre>
+
+<p>2. ./js/app.js<br>在app.js中加入pdf模块</p>
+<pre>angular.module('app', ['pdf']);</pre>
+
+<p>3. ./js/controller.js<br>在控制器中加入pdf加载时候的提示</p>
+<pre> angular.module('app.controllers', []).controller('PDFCtrl', function($scope, $stateParams) {
+ $scope.pdfName = 'Relativity: The Special and General Theory by Albert Einstein';
+ $scope.pdfUrl = $stateParams.url;
+ $scope.scroll = 0;
+ $scope.dataHasLoad = '0%';
+ $scope.dataTotal = 0;
+ $scope.loading = '加載中。。。';
+ $scope.getNavStyle = function(scroll) {
+ if (scroll &amp;gt; 100) return 'pdf-controls fixed';
+ else return 'pdf-controls';
+ }
+ $scope.onError = function(error) {
+ console.log(error);
+ }
+ $scope.onLoad = function() {
+ $scope.loading = '';
+ }
+ //加载的时候，会根据加载进度，显示响应的百分比
+ $scope.onProgress = function(progressData) {
+ $scope.dataHasLoad = Math.ceil((parseInt(progressData.loaded))/(parseInt(progressData.total))) + '%';
+ };
+});</pre>
+
+<p>4. ./templates/pdf.html</p>
+<pre> 
+&lt;ion-view view-title="PDF Viewer"&gt;
+ &lt;ion-content scroll="true" overflow-scroll="true"&gt;
+ &lt;ng-pdf template-url="pdf-viewer.html" canvasid="pdf-canvas" scale="page-fit" page=1&gt;&lt;/ng-pdf&gt;
+ &lt;/ion-content&gt;
+&lt;/ion-view&gt;
+&lt;!-- PDF模板文件 --&gt;
+&lt;script type="text/ng-template" id="pdf-viewer.html"&gt;
+ &lt;nav ng-class="getNavStyle(scroll)" class="margin-before-block"&gt;
+ &lt;button class="maga-download" ng-click="goPrevious()"&gt;&lt;span&gt;上頁&lt;/span&gt;&lt;/button&gt;
+ &lt;button class="maga-download" ng-click="goNext()"&gt;&lt;span&gt;下頁&lt;/span&gt;&lt;/button&gt;
+ &lt;button class="maga-download" ng-click="zoomIn()"&gt;&lt;span&gt;放大&lt;/span&gt;&lt;/button&gt;
+ &lt;button class="maga-download" ng-click="fit()"&gt;&lt;span&gt;100%&lt;/span&gt;&lt;/button&gt;
+ &lt;button class="maga-download" ng-click="zoomOut()"&gt;&lt;span&gt;縮小&lt;/span&gt;&lt;/button&gt;
+ &lt;/nav&gt;
+ &lt;hr&gt;
+ &lt;span ng-show="loading != '' "&gt;{ {loading}} { {dataHasLoad}}&lt;/span&gt;
+ &lt;div class="pdf-panel"&gt;
+ &lt;canvas id="pdf-canvas" class="rotate0"&gt;&lt;/canvas&gt;
+ &lt;/div&gt;
+&lt;/script&gt;</pre>
+
+<p>后续补充，IOS9以上的系统上述的方法还是无法加载PDF，需要加上一个兼容适应的JS之后才能使用，文件都打包在同个文件夹了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/04/17/angular-plugin-pdf/" data-id="cj1oz9yio000a28oho91jx872" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angular/">angular</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angularjs/">angularjs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/plugin/">plugin</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-angular-filter-content" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/14/angular-filter-content/" class="article-date">
+  <time datetime="2017-03-14T03:23:59.000Z" itemprop="datePublished">2017-03-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/AngularJs/">AngularJs</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/14/angular-filter-content/">Angular中自定义filter输出富文本内容</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>使用环境，直接把后台输出的来自富文本编辑器的包含HTML标签的代码，原样输出。</p>
+<p><pre>//app.js<br>angular.module(‘xxx’).filter(<br>  ‘to_trusted’, [‘$sce’, function($sce) {<br>    return function(text) {<br>      return $sce.trustAsHtml(text); //直接把内容作为HTML使用<br>    }<br>  }]<br>)<br>.filter(‘no_html’,function(){<br>  return function(input){<br>    return input.replace(/&lt;[^&gt;]+&gt;/g,””);//去掉所有的html标记<br>  }<br>});</pre></p>
+<p>//template.html<br>&lt;div class=”xxx” ng-bind-html=”html_content | to_trusted”&gt;&lt;/div&gt;<br>&lt;div class=”xxx”&gt;{ {html_content2 | no_html}}&lt;/div&gt;<br>&nbsp;</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/14/angular-filter-content/" data-id="cj1oz9yhz000028ohzu61pti0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-angular-http-json" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/02/angular-http-json/" class="article-date">
+  <time datetime="2017-03-02T03:13:07.000Z" itemprop="datePublished">2017-03-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/AngularJs/">AngularJs</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/02/angular-http-json/">用Angular的HTTP服务以JSON方式获取数据</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>解决问题：使用AngularJS默认的HTTP发送数据给PHP的时候，PHP无法通过$_POST获取传过来的数据。</p>
+<p>1. service.js中的写法</p>
+<pre>angular.module('starter.services', []).factory('DataApi', function($http) {
+  return { 
+    login: function(data) {
+      return $http.post('url', { 'name': data.name, 'password': data.password } );
+    },
+  }
+});</pre>
+2\. controller.js中的写法
+<pre>$scope.doLogin = function() {
+  DataApi.login($scope.loginData).success(function(resp) {
+    /* express code */
+  });
+};</pre>
+3\. app.js中的写法
+<pre>angular.module('starter', ['ionic', 'starter.controllers', 'starter.services']).config(function($httpProvider) {
+  $httpProvider.defaults.transformRequest = function(obj) {
+    var str = [];
+    for (var p in obj) {
+      str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+    }
+    return str.join("&amp;");
+  };
+  $httpProvider.defaults.headers.post = {
+    'Content-Type': 'application/x-www-form-urlencoded'
+  }
+})</pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/02/angular-http-json/" data-id="cj1oz9yi8000228ohc3fm910i" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-ps-cut" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/18/ps-cut/" class="article-date">
+  <time datetime="2017-02-18T06:31:40.000Z" itemprop="datePublished">2017-02-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PhotoShop/">PhotoShop</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/18/ps-cut/">前端工程师必备的PS切图技能</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>PS 切图技巧（使用的PhotoShop版本为PhotoShop CC 2016）</p>
+<p>1. 新建文件的时候，可以把设定的参数存储为预设。<br>2. 用快捷键[ V ]调用移动工具，注意取消自动选择，并设置为图层，用[ ctrl + 左键 ]快速选择图层。<br>3. 打开视图 - 显示 - 智能参考线，打开视图 - 标尺。<br>4. 右边只保留图层、历史记录、信息、字符 这四个。<br>5. 信息的面板选项，把模式改为RGB颜色，设置单位为像素，打开文档大小和文档尺寸。<br>6. 在编辑 - 首选项 - 单位与标尺，把单位都设置为像素。<br>7. 选中两个以上图形的话，可以选择左对齐等对齐方式。<br>8. 选区工具左上角有四个选区方式，单选区、多选区[ shift ]、去除选区[ alt ]、选区交集。<br>9. 拉取选区工具的时候，按住[ shift ]会使选区变为正方形。<br>10. 拉取选区的时候，按住[ alt ]会使选区从中间开始选。<br>11. 用快捷键[ M ]调用选区工具，用[ shift + M ]可以切换矩形/椭圆选区工具。<br>12. 磁性套索工具，会让选区尽量放在颜色交汇的边界处。<br>13. 用[ W ]调用快速选择工具，用中括号控制大小。<br>14. 用[ ctrl + d]可以删去选区。<br>15. 选择图层之后，选择裁剪，会直接把图层裁剪出来。<br>16. 选择裁剪图层之后，用[ alt + 左键 ]选择图层左边的眼睛，可以隐藏其他不需要的图层。<br>17. 吸管工具是用来取图层颜色的工具。<br>18. 污点修复画笔工具是用来去除照片上污点的工具。<br>19. 修复画笔工具是用来复制目标位置内容的工具。<br>20. 修补工具选择选区后，用鼠标拖动，会将目标选区的内容替换旧选区的内容。<br>21. 历史记录画笔工具可以用来保存历史记录到画笔中，然后在原图片中点击美化。<br>22. 魔术橡皮擦类似于用魔棒工具选择之后删除。<br>23. 输入文本的时候，如果文字有毛边，可以选择[ Windows LCD ]的选项平滑文字边缘。<br>24. 可以先用钢笔画出一个路径，然后在路径上写文字。<br>25. 可以临时使用空格键[ 或 H ]，拖动这个画布。<br>26. 按住[ ctrl ]选择某个图层，可以把图层作为一个选区。<br>27. 可以从上面或左面的标尺中拉出参考线，可以用[ alt ]改变方向。<br>28. 切图的时候，可以用切片后保存为web格式，会自动生成图片文件<br>29. 打开增效工具中的生成器，并且打开文件 - 生成 - 图片资源，当图层命名为[ .png ]时会生成图片。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/02/18/ps-cut/" data-id="cj1oz9yj9000z28ohpjn299dq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/photoshop/">photoshop</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-typescript-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/09/typescript-1/" class="article-date">
+  <time datetime="2017-02-09T07:31:00.000Z" itemprop="datePublished">2017-02-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/AngularJs/">AngularJs</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/09/typescript-1/">TypeScript入门</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>TypeScript入门</p>
+<p>这是学AngularJS 2 所需要学的知识。</p>
+<p>1. 声明字符串的时候，用[ `` ]（键盘上1左边那个键）来括住字符串，可以在字符串换行，TS会转为[ \n ]。</p>
+<p>2. 在[ `` ]中可以写变量和函数的调用。</p>
+<pre> console.log(`hello ${var} ${function()}`)</pre>
+3\. 使用[ `` ]调用函数的时候，可以自动拆分字符串。
+<pre> function test(a,b,c){} test`hello ${ee} is ${ff}`</pre>
+4\. 声明变量后冒号填写变量类型，之后赋值的时候会检查类型。
+<pre> var myname: string = 'John'; /* number, boolean */</pre>
+5\. 变量类型为[ any ]的时候，可以赋所有值。
+<pre> var alias: any = 'ii';</pre>
+6\. 函数的类型可以设置为[ void ]。
+<pre> function test(): void{ ... }</pre>
+7\. 为函数的参数指定默认值。
+<pre> function test(a: string = 'jojo'){ ... }</pre>
+8\. 函数参数中需要使用可选参数的时候，在变量后面加上问号。
+<pre> function test(a?: string){ ... }</pre>
+9\. 函数参数传入任意数量的参数。
+<pre> function func1(...args){ ... }</pre>
+10\. 用关键字[ yield ]可以暂停代码执行，ES6特性，TypeScript暂不支持，用[ next() ]调用。
+
+11\. 通过函数关键字后面加上星号声明generator函数。
+<pre> function* getStockPrice(stock) { ... }</pre>
+12\. 析构表达式可以拆分获取的对象为变量，变量名需要对应，或者取别名。
+<pre> function getStock(){ return {code: "IBM", price:{ price1: 100, price2: 200 } } 
+ var {code: codex, price: {price2}} = getStock(); /* codex = "IBM", price = 200 */</pre>
+13\. 用析构表达式拆分数组里面的数据。
+<pre> var array1 = [1, 2, 3, 4, 5];</pre>
+var [number1, , number3, ...other] = array1; /* 1, 3, [4, 5] */ ]
+
+14\. 箭头表达式，用来声明匿名函数，消除传统匿名函数的this指针问题。
+<pre> var sum = {arg1, arg2} =&gt; { arg1 + arg2; }</pre>
+15\. 循环语法[ forEach(), for in, for of ]
+<pre>forEach(): 无法在循环中跳出循环，且无法循环属性值。
+   [ for(var n in array){ ... } ]: 循环数组的key值，可以用[ break ]跳出。
+   [ for(var n of array){ ... } ]: 循环数组的value值，可以用[ break ]跳出。</pre>
+16\. TypeScript的核心是类，大部分代码都是写在类里面的。
+<pre> class Person{ name; eat(){ ... } }   var p1 = new Person();</pre>
+17\. class内的变量有三种访问控制符，默认是[ public ]，还有[ private, protected ]。
+
+18\. 在class内写[ constructor(public name:string){ ... } ]作为构造函数，只有实例化时才会调用。
+
+19\. 用[ extends ]声明类的继承关系。
+<pre> class Employee extends Person { ... }</pre>
+20\. 用[ super ]调用父类的构造函数，子类另写构造函数的时候必须调用父类的构造函数。
+
+21\. [ interface ]可以作为参数的类型。
+<pre> interface IPerson{ ... } class Person{ constructor(public config: IPerson){ ... } }</pre>
+22\. [ interface ]可以用于class的实现，class必须重写接口中的方法。
+<pre> class Person implement IPerson{ ... }</pre>
+23\. [ export ]表示对外暴露，加在变量或方法或类的声明前面，只有对外暴露才能在其他文件[ import ]。
+<pre> export var name = "hoho";</pre>
+24\. 注解用[ @ ]来表示，在AngularJS 2 中解释为需要引入的文件。
+<pre> @Component({selector: 'app-root', templateUrl: './app-com.html', styleUrls: ['./app-s.css'] })</pre>
+25\. 在TypeScript中使用已有的工具包，其后缀名是.d.ts。
+<pre> https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/jquery</pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/02/09/typescript-1/" data-id="cj1oz9yji001828ohkmtzl86l" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/typescript/">typescript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-sass-2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/08/sass-2/" class="article-date">
+  <time datetime="2017-02-08T09:18:05.000Z" itemprop="datePublished">2017-02-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/CSS/">CSS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/08/sass-2/">Sass进阶学习篇</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Sass进阶学习篇</p>
+<p>这篇学习笔记是<a href="/2017/sass-1">Sass入门学习篇</a>的后续学习。</p>
+<p>1. 判断语句[ @if ]，可以搭配[ @else if ]和[ @else ]使用，判断true或false。</p>
+<p><pre> @if $boolean { … } @else { … }</pre><br>2. for循环，其中[ through ]可以更换为[ to ]，用[ to ]的时候不包含[ ]。</p>
+<p><pre> @for $i from  through  { ..#{$i}.. }</pre><br>3. while循环，直到while后面的表达式的值为false的时候停止循环。</p>
+<p><pre> @while $types &gt; 0 { … }</pre><br>4. each循环，遍历一个列表，从列表中取出对应的值。</p>
+<p><pre> @each $var in  { … }</pre><br>5. unquote函数是用来删除一个字符串中的引号，quote则是用来加上引号。</p>
+<p><pre> content: unquote(‘Hello Sass!’);</pre><br>6. 字符串大小写函数[ to-upper-case ]和[ to-lower-case ]。</p>
+<p><pre> content: to-upper-case(aaaa);</pre><br>7. 常用的数字函数。<br>percentage($value): 将一个不带单位的数转为百分比值（.2转为20%）。<br>round($value): 将数值四舍五入，转换成整数，并保留单位（px 或 % 等）。<br>ceil / floor($value): 向上/向下取整，并保留单位。<br>abs($value): 取绝对值，并保留单位。<br>max / min($numbers…): 获得最大值/最小值，只能比较同一类型的值。<br>random(): 获取一个0-1的随机数，不包含1。</p>
+<p>8. 常用的列表函数。<br>length($list): 返回列表的长度，$list的参数用空格隔开。<br>nth($list, $n): 返回列表中指定标签值，从1开始算，颜色会自动转成数值型的。<br>join($list1, $list2, [$separator]): 合并多个列表，separator为comma的时候显示逗号。<br>append($list, $val, [$separator]): 把一个值追加到列表，separator为space的时候显示空格。<br>zip($lists…): 将几个列表组成多维列表，每个单一的列表个数值必须是相同的。<br>index($list, $value): 返回一个值在列表中的位置，从1开始，找不到则返回false。</p>
+<p>9. 几个Introspection函数。<br>type-of($value): 返回一个值的类型[ number string bool color ]。<br>unit($number): 返回一个值的类型，除了[ px cm mm ]外的不同单位的加减单位获取会报错。<br>unitless($number): 判断一个值是否带单位，不带单位则返回true。<br>comparable($number1, $number2): 判断两个值是够可以加减、合并，[ px cm mm ]间为true。</p>
+<p>10. Miscellaneous函数（三元条件函数），[ if($condition, trueVal, falseVal) ]。</p>
+<p>11. Map是包含key-value的数组，类似JSON。下面是Map的一些常用函数。<br>map-get($map, $key): 根据key值，返回map中的value。<br>map-merge($map1, $map2): 合并两个map。<br>map-remove($map, $key): 从map中删除一个key，并返回一个新map。<br>map-keys($map): 返回map中所有key。<br>map-values($map): 返回map中所有value。<br>map-has-key($map, $key): 根据key值，判断map中是否有对应value。<br>keywords($args): 返回一个函数的参数，这个参数可以动态设置key和value。</p>
+<p>12. RGBA函数中，颜色可以用颜色缩写或颜色值代替RGB值。</p>
+<p><pre> color: rgba(#f36, .5);  border-color: rgba(orange, .3);</pre><br>13. 使用[ @import ]引用其他文件，如无后缀则默认为SCSS，带下划线开头的SCSS文件则不另外编译。<br>下列情况会被编译成CSS的<a href="&#39;xxx.css&#39;, &#39;http://xxx&#39;, &#39;url(xxx"> @import </a>‘, 包含媒体查询)。</p>
+<p>14. 写在嵌套样式中的@media媒体查询会冒泡到样式外面。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/02/08/sass-2/" data-id="cj1oz9yjf001528ohrgporrba" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-sass-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/08/sass-1/" class="article-date">
+  <time datetime="2017-02-08T04:04:14.000Z" itemprop="datePublished">2017-02-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/CSS/">CSS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/08/sass-1/">Sass入门学习篇</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>学习Sass的起因是Ionic2框架中使用到了这个css技术，之前有学过LESS，学Sass还是比较容易的。</p>
+<p>1. 用’$’符号代表变量。</p>
+<pre> $color: red;</pre>
+2\. 变量可以用在css属性上面。
+<pre> $side: left; .div{ margin-#{$side}:0px; }</pre>
+3\. sass文件在CLI下编译，加上--watch的话会监视文件的变化。
+<pre> sass --watch &lt;源文件文件路径&gt;/style.scss:&lt;输出路径&gt;/style.css</pre>
+4\. 如果使用嵌套的样式的话，编译的时候需要在末尾加上参数可以输出不同格式。
+嵌套输出方式[ --style nested ]
+展开输出方式[ --style expanded ]
+紧凑输出方式[ --style compact ]
+压缩输出方式[ --style compressed ]
+
+5\. 变量后面加上[ !default ]的话，优先级低于不加这个参数的。
+
+6\. 嵌套写法中，使用[ &amp; ]代替父选择器。
+<pre> nav{ a{ header &amp; {color:green;} } }</pre>
+7\. 属性可以嵌套书写。
+<pre> .box{ font: { size:12px; weight:bold; } }</pre>
+8\. 使用参数[ @mixin ]来声明混合宏。
+<pre> @mixin box-shadow($radius){ ... }</pre>
+9\. 调用已经定义好的混合宏。
+<pre> button{ @include box-shadow(5px); }</pre>
+10\. 继承父类样式需要使用[ @extend ]参数。
+<pre> @extend .btn;</pre>
+11\. 占位符[ % ]用于写需要被继承的类，不[ @extend ]的时候不会产生代码。
+<pre> %md5{ margin-top:5px; }</pre>
+12\. 代码块中包含变量的时候使用混合宏，但是多次调用的代码不会合并。
+如果不需要传递值的时候使用继承，不论是否调用都会生成对应样式代码。
+占位类似于继承，但不调用的时候不会产生额外代码。
+
+13\. 插值[ #{$var} ]不能使用在mixin中，但可以使用在extend中。
+<pre> @extend %mt5-#{$scale};</pre>
+14\. 注释方式[ // ]不会在目标文件生成，而[ /* */ ]会在目标文件生成。
+
+15\. 使用加法或减法的时候，不用类型的单位会使编译器报错。
+<pre> width: 20px + 1em;</pre>
+16\. 使用除法的时候，需要加上小括号，或者是有其他运算符，或者是变量或函数。
+<pre> width: (100px / 2); height: 100px / 2 + 10px;</pre>
+17\. 简单的for循环，从1循环到12。
+<pre> @for $i from 1 through 12 { ... }</pre>
+18\. 颜色的加法，会分为RGB三部分来相加。
+<pre> $color: #010203 + #040506; // #050709</pre>
+19\. 字符的加法，加完后会自动判断是否显示引号。
+<pre> content: "Foo " + Bar; /* 保留引号 */ font-family: sans- + "serif"; /* 不留引号 */</pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/02/08/sass-1/" data-id="cj1oz9yja001128ohv411o7di" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-angularjs-a-confirm" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/18/angularjs-a-confirm/" class="article-date">
+  <time datetime="2017-01-18T03:39:58.000Z" itemprop="datePublished">2017-01-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/AngularJs/">AngularJs</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/18/angularjs-a-confirm/">AngularJs中使用 a 标签弹出确认框</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一般在html中可以使用以下代码，先弹出确认框在根据用户选择判断是否跳转。点击确认会跳转到page.html，点击取消会关闭确认框。</p>
+<p><pre>&lt;a href=”page.html” onclick=”return confirm(‘Confirm to redirect?’)”&gt;&lt;/a&gt;<br></pre><br>但如果是AngularJS中 a 标签用到 ui-sref 来代替 href 的话，此时用上述的用法就会出现点击确认或者取消都会进行跳转。此时可以按照以下写法，在script中拼装页面链接。</p>
+<p><pre>&lt;a href=”javascript:void(0)” ng-click=”deleteThis(id)”&gt;<br>&lt;script&gt;<br>$scope.deleteThis = function(id){<br>  if(confirm(‘Confirm to redirect?’)){<br>    location.href = ‘page.html’;<br>  }<br>};<br>&lt;/script&gt;</pre><br>&nbsp;</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/01/18/angularjs-a-confirm/" data-id="cj1oz9yih000528ohirnsbb58" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angular/">angular</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angularjs/">angularjs</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-duan-she-li" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/12/22/duan-she-li/" class="article-date">
+  <time datetime="2016-12-22T08:04:47.000Z" itemprop="datePublished">2016-12-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Other/">Other</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/22/duan-she-li/">《断舍离》笔记：通向自由的26个丢弃</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这本书最早是博客思听里听到的有声书， 今年出简体版了， 作者山下英子， 是个杂物管理咨询师。 她在书中提到目前为止大部分的整理术， 特别是收纳术， 都是在物品数量不减少的基础上， 花费大量的时间、 空间、 劳力、 精力来整理。 而“ 断舍离” 是从根本上反思自己与物品的关系， 对物品进行简化、 取舍， 为人们省出整理的时间、 空间、 劳力和精力。 山下英子将瑜伽中的行法哲学“ 断行、 舍行、 离行”—— 这种放弃心中执念的理念提炼成“ 断舍离”， 运用到日常生活整理整顿、 人际关系、 思考等各个方面。</p>
+<p>这本书中的特点在于： 断舍离的主角并不是物品， 而是自己， 而时间轴永远都是现在。 选择物品的窍门， 不是“ 能不能用”， 而是“ 我要不要用”， 这一点必须铭刻在心。</p>
+<p>从加法生活转向减法生活很重要， 并不是心灵改变了行动， 而是行动带来了心灵的变化。 可以说， 断舍离就是一种动禅。</p>
+<p>看到有人已经分享过笔记了， 直接转载一下。</p>
+<p>转载： http: //www.marieclairechina.com/life/health/health/20130822-pic-45666.shtml</p>
+<p><strong>“断舍离” 是指：</strong></p>
+<p><strong>断 = 不买、 不收取不需要的东西</strong></p>
+<p><strong>舍 = 处理掉堆放在家里没用的东西</strong></p>
+<p><strong>离 = 舍弃对物质的迷恋， 让自己处于宽敞舒适， 自由自在的空间。</strong></p>
+<p>到底应该怎样抛弃执念， 让人生变得从此清爽呢？ 也许以下这份清单可以帮助到你！</p>
+<p>通向自由的26个丢弃</p>
+<p>&nbsp;</p>
+<p><strong>阶段1</strong></p>
+<p><strong>物质和金钱</strong></p>
+<p>1 丢掉视线里的“ 噪音”。 Simple and Creative Life不要允许微小的视线阻挡物存在。</p>
+<p>2 丢掉现在不用的东西。 Beauty of Nothing与物品告别， 也是同过去的自己告别。</p>
+<p>3 丢掉“ 储存” 的概念。 Going Minimum以利用“ 外部仓库” 的方式思考。</p>
+<p>4 丢掉舍不得拿出来的习惯。 Pay Forward把东西让给更加需要的人。</p>
+<p>5 丢掉零线包A Little Makes a Big Loss比起下定决心的大额消费， 不知不觉中的小额消费更可怕</p>
+<p>6 丢掉冲动购物。 Listen to Your Soul只买从心底喜欢的东西。</p>
+<p>7 丢掉说“ 随便” 的坏习惯You are What You Buy不是要节约， 而是要选择。</p>
+<p>8 丢掉附属品。 Natural Beauty比起去选择， 不如惯用标准装备。</p>
+<p>9 丢掉“ 提高生活水平” 的想法。 Minimum Life Cost从金钱中解放感性的自由。</p>
+<p>10 丢掉服装的选项。 Find Your Best Fit定好自己的“ 基本装扮”。</p>
+<p>&nbsp;</p>
+<p><strong>阶段2</strong></p>
+<p><strong>工作方式</strong></p>
+<p>11 丢掉不擅长的工作。 Make Your Creative Time在擅长工作中寻找创造力。</p>
+<p>12 丢掉多重任务的思考方式。 Focus On正如点茶一样， 要专注于眼前的事情。</p>
+<p>13 丢掉过度的自信。 Look at Yourself高估自己的人里面没有成功者。</p>
+<p>14 丢掉To Do。 Inner Quest那些“ 要做的事” 真的是“ 自己应该做的事” 吗？</p>
+<p>15 丢掉对多数意见的服从。 Sing<br>for One认为可行就坚决支持。</p>
+<p>16 丢掉定时。 Your Own Pace不要去迎合周围的安排。</p>
+<p>17 丢掉指南。 No Change, No Future束缚自己的并不是别人， 而是自己。</p>
+<p>18 丢掉老地图。 Trust Your Instinct坚信自己的感觉。</p>
+<p>19 丢掉拖延的想法。 Now is the Chance消沉和恐惧是理所当然的事情。</p>
+<p>20 丢掉平衡感。 Be a Specialist不要期望成为一个全能的人。</p>
+<p>&nbsp;</p>
+<p><strong>阶段3</strong></p>
+<p><strong>自身保养</strong></p>
+<p>21 丢掉熬夜。 Rise and Shine一日之计在于晨。</p>
+<p>22 丢掉“ 低质量睡眠”。 Be Hungry and Rest创造完美的睡眠环境。</p>
+<p>23 丢掉饱腹。 A Hungry Dog Hunts Bests没有人能应付得了“ 吃多了”。</p>
+<p>24 丢掉别人的意见。 Be Yourself一个人走出森林。</p>
+<p>25 丢掉污秽的语言。 You are What You Say丢掉语言， 一直走到精疲力竭。</p>
+<p>26 丢掉“ 为了学习而学习”。 Studying is Just a Tool使人心情沉重的学习毫无意义。</p>
+<p>&nbsp;</p>
+<p>无独有偶， 与山下英子有着相似理念的金子由纪子， 主张通过“ 拥有少量的有用的、 有品位的东西, 过简洁而快乐的生活”。 在她的著作《 不持有的生活》 里， 提供了另外一些能够有效帮助你高效、 简洁生活的见解。</p>
+<p>不持有的生活会有7种生活习惯：</p>
+<p>1. 不拿。 免费得到的东西， 很少被人珍惜， 因此往往囤积不用。“ 不持有” 的第一步就是“ 不拿”， 不拿免费塑料袋， 以自备购物袋来代替； 免费发送又用不到的赠品， 也要坚持完全不拿的态度。</p>
+<p>2. 不买。 冲动购物感觉痛快， 但买完东西感到后悔的状况也不少， 因此只要是“ 没买也无所谓” 的东西， 就坚持不买， 让物品登堂入室的门槛变高， 这样家中就只会出现真正喜欢、 真正必要的东西。</p>
+<p>3. 不储存。 不囤积保鲜膜和卫生纸这类消耗品， 也许大减价时买了一堆， 像占了便宜， 却容易造成使用上的浪费。 一旦停止囤积， 使用时就会更谨慎， 并且想出各种生活小妙招， 例如以密闭容器代替保鲜膜、 纱布代替卫生纸， 自然能降低消耗品的使用率， 换来神清气爽的好生活。</p>
+<p>4. 丢弃。 养成丢弃的习惯， 杂志或小册子超过一定数量， 就丢掉； 没在使用的漂亮糕饼盒子、 过期的食物和调味料， 也丢掉。 并且确实执行丢弃前的准备工作， 例如用美观的袋子， 作为垃圾分类的容器， 让丢弃这件事， 变得轻松愉快。</p>
+<p>5. 替代。 添购一样物品前， 先想想家里是否有其他东西可替代？ 例如一年可能只用到一次的漏斗， 就用现有的塑料板卷成漏斗状来代替， 如此就能避免多持有一个东西； 活用现有物品， 不是为了弥补贫困， 而是为了创造丰足。</p>
+<p>6. 借用。 不常用的东西， 可以借用或租用， 和其他人一起使用更多物品， 每个家庭或许就会减少囤积少用物品的情况， 避免压迫居住空间， 减少无谓的浪费。</p>
+<p>7. 没有也无所谓。 购物前， 务必自问： 这个真的是必要的吗？ 也许能得到“ 没有也无所谓” 的答案； 生活中这种东西， 应该很多。</p>
+<p>&nbsp;</p>
+<p>• 带购物袋出门， 拒绝塑胶袋</p>
+<p>• 回家马上确认信箱， 不要的文件即归为资源垃圾</p>
+<p>• 减少购买需拆封或只需要微波烹调的食物</p>
+<p>• 比起买“ 因为便宜大量购买”， 选择“ 虽然贵但很喜欢” 的物品， 并慎重的使用</p>
+<p>• 不拿免费的物品</p>
+<p>• 购物时带着事先列好的清单同行</p>
+<p>• 即使没有变化， 也只穿之子喜欢的衣服</p>
+<p>• 用家里现有， 自己喜欢的餐具吃饭</p>
+<p>• 早三十分钟起床</p>
+<p>• 早上一起床就打开窗户， 呼吸新鲜空气</p>
+<p>• 尽量要吃早餐</p>
+<p>• 尽量在早上洗衣服</p>
+<p>• 丢弃垃圾袋之前将其缩小， 减小体积</p>
+<p>• 四楼以下， 尽量爬楼梯</p>
+<p>• 说谢谢的时候， 看着对方双眼并微笑</p>
+<p>• 注意保持良好姿势</p>
+<p>• 自觉急躁， 焦虑的话， 做深呼吸</p>
+<p>• 每天一定看天空一次</p>
+<p>• 减少吃便利商店的便当和超市里现有的熟食</p>
+<p>• 不要边吃饭边看什么或读书</p>
+<p>• 回到家， 鞋子脱掉后放好</p>
+<p>• 回到家， 包包和外衣放在固定的地方</p>
+<p>• 衣服暂放的时候， 一定要折好</p>
+<p>• 要暂放东西时， 一定要整理好</p>
+<p>• 晚餐尽量自己做</p>
+<p>• 一天五分钟（ 一分钟亦可）， 闭目静坐</p>
+<p>• 尽量在一天之内整理完晒开的义务</p>
+<p>• 只在预订的时间看电视</p>
+<p>• 只在预订的时间上网</p>
+<p>• 垃圾在夜里整理完毕</p>
+<p>• 睡觉前， 确认手机和数码相机是否已充电</p>
+<p>• 睡觉前， 将报纸放到柜子里</p>
+<p>• 睡觉前， 餐桌要收拾干净</p>
+<p>• 睡觉前， 地板要收拾干净</p>
+<p>• 睡觉前， 水槽里待洗的碗盘要清理干净</p>
+<p>• 睡觉前， 事先做好明日外出的准备</p>
+<p>• 每天一定写日记， 一行也可以</p>
+<p>• 每天用吸尘器打扫家里</p>
+<p>• 每三天擦一次地板和家具</p>
+<p>• 自己选择并整理毛巾和肥皂</p>
+<p>• 疲劳的夜晚， 点燃蜡烛</p>
+<p>• 疲劳的夜晚， 点燃焚香</p>
+<p>• 疲劳不堪时， 看悲伤的电影痛哭一场</p>
+<p>• 洗发精和面纸， 换成自己选择的配方</p>
+<p>• 两个月办一次家庭聚会</p>
+<p>• 欣赏美术馆或者饭店休息室等美轮美奂的地方</p>
+<p>• 家里的物品， 尽可能选统一的颜色</p>
+<p>• 家里的物品， 尽可能选择没有花色或者花样的</p>
+<p>• 家里的物品尽可能选择能叠放， 能大小套在一起及可多次使用的</p>
+<p>• 买物品时， 以要使用10年以上为前提</p>
+<p>• 尽可能不申请会员卡</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/12/22/duan-she-li/" data-id="cj1oz9yiw000i28ohxy9vyvw6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-angular-localresizeimg" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/12/21/angular-localresizeimg/" class="article-date">
+  <time datetime="2016-12-21T06:23:12.000Z" itemprop="datePublished">2016-12-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/AngularJs/">AngularJs</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/21/angular-localresizeimg/">Angular移动端上传压缩图片</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>背景：随着手机的发展，手机拍照之后照片越来越大，导致在移动端上传图片的时候变慢。所以需要把图片在本地压缩之后再上传。</p>
+<p>所需文件：</p>
+<p>1、图片压缩的JS： <a href="http://www.zhuoyousheng.cn/wp-content/download/LocalResizeIMG.js" target="_blank" rel="external">LocalResizeIMG.js</a></p>
+<p>2、修复移动端BUG的补丁文件： <a href="http://www.zhuoyousheng.cn/wp-content/download/mobileBUGFix.mini.js" target="_blank" rel="external">mobileBUGFix.mini.js</a></p>
+<p>3、Angular的directive方法：<a href="http://www.zhuoyousheng.cn/wp-content/download/angular-localResizeIMG.js" target="_blank" rel="external">angular-localResizeIMG.js</a></p>
+<p>4、HTML写法：</p>
+<p><img src="http://www.zhuoyousheng.cn/wp-content/uploads/2016/12/e74613ad259320cef260669a1ffbfab6.png" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/12/21/angular-localresizeimg/" data-id="cj1oz9yil000828ohjx1ptqoy" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angular/">angular</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angularjs/">angularjs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html5/">html5</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">__('next') &raquo;</a>
+  </nav>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AngularJs/">AngularJs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Other/">Other</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/PhotoShop/">PhotoShop</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Wordpress/">Wordpress</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/angular/">angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/angularjs/">angularjs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/facebook/">facebook</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ionic/">ionic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/language/">language</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/less/">less</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nav/">nav</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/photoshop/">photoshop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/plugin/">plugin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/roles/">roles</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/route/">route</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scope/">scope</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/social-share/">social share</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/typescript/">typescript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/">windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wordpress/">wordpress</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/angular/" style="font-size: 16.67px;">angular</a> <a href="/tags/angularjs/" style="font-size: 16.67px;">angularjs</a> <a href="/tags/css/" style="font-size: 16.67px;">css</a> <a href="/tags/facebook/" style="font-size: 10px;">facebook</a> <a href="/tags/html5/" style="font-size: 13.33px;">html5</a> <a href="/tags/ionic/" style="font-size: 10px;">ionic</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/language/" style="font-size: 10px;">language</a> <a href="/tags/less/" style="font-size: 10px;">less</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/nav/" style="font-size: 10px;">nav</a> <a href="/tags/photoshop/" style="font-size: 10px;">photoshop</a> <a href="/tags/plugin/" style="font-size: 10px;">plugin</a> <a href="/tags/roles/" style="font-size: 10px;">roles</a> <a href="/tags/route/" style="font-size: 10px;">route</a> <a href="/tags/scope/" style="font-size: 10px;">scope</a> <a href="/tags/social-share/" style="font-size: 10px;">social share</a> <a href="/tags/typescript/" style="font-size: 10px;">typescript</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a> <a href="/tags/wordpress/" style="font-size: 20px;">wordpress</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/04/17/angular-plugin-pdf/">Angular插件：PDF在线浏览</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/14/angular-filter-content/">Angular中自定义filter输出富文本内容</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/02/angular-http-json/">用Angular的HTTP服务以JSON方式获取数据</a>
+          </li>
+        
+          <li>
+            <a href="/2017/02/18/ps-cut/">前端工程师必备的PS切图技能</a>
+          </li>
+        
+          <li>
+            <a href="/2017/02/09/typescript-1/">TypeScript入门</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Sass入门学习篇 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="学习Sass的起因是Ionic2框架中使用到了这个css技术，之前有学过LESS，学Sass还是比较容易的。 1. 用’$’符号代表变量。  $color: red; 2\. 变量可以用在css属性上面。  $side: left; .div{ margin-#{$side}:0px; } 3\. sass文件在CLI下编译，加上--watch的话会监视文件的变化。  sass --watch &amp;">
+<meta name="keywords" content="css">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sass入门学习篇">
+<meta property="og:url" content="http://yoursite.com/2017/02/08/sass-1/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="学习Sass的起因是Ionic2框架中使用到了这个css技术，之前有学过LESS，学Sass还是比较容易的。 1. 用’$’符号代表变量。  $color: red; 2\. 变量可以用在css属性上面。  $side: left; .div{ margin-#{$side}:0px; } 3\. sass文件在CLI下编译，加上--watch的话会监视文件的变化。  sass --watch &amp;">
+<meta property="og:updated_time" content="2017-04-19T12:56:40.097Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sass入门学习篇">
+<meta name="twitter:description" content="学习Sass的起因是Ionic2框架中使用到了这个css技术，之前有学过LESS，学Sass还是比较容易的。 1. 用’$’符号代表变量。  $color: red; 2\. 变量可以用在css属性上面。  $side: left; .div{ margin-#{$side}:0px; } 3\. sass文件在CLI下编译，加上--watch的话会监视文件的变化。  sass --watch &amp;">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-sass-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/08/sass-1/" class="article-date">
+  <time datetime="2017-02-08T04:04:14.000Z" itemprop="datePublished">2017-02-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/CSS/">CSS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Sass入门学习篇
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>学习Sass的起因是Ionic2框架中使用到了这个css技术，之前有学过LESS，学Sass还是比较容易的。</p>
+<p>1. 用’$’符号代表变量。</p>
+<pre> $color: red;</pre>
+2\. 变量可以用在css属性上面。
+<pre> $side: left; .div{ margin-#{$side}:0px; }</pre>
+3\. sass文件在CLI下编译，加上--watch的话会监视文件的变化。
+<pre> sass --watch &lt;源文件文件路径&gt;/style.scss:&lt;输出路径&gt;/style.css</pre>
+4\. 如果使用嵌套的样式的话，编译的时候需要在末尾加上参数可以输出不同格式。
+嵌套输出方式[ --style nested ]
+展开输出方式[ --style expanded ]
+紧凑输出方式[ --style compact ]
+压缩输出方式[ --style compressed ]
+
+5\. 变量后面加上[ !default ]的话，优先级低于不加这个参数的。
+
+6\. 嵌套写法中，使用[ &amp; ]代替父选择器。
+<pre> nav{ a{ header &amp; {color:green;} } }</pre>
+7\. 属性可以嵌套书写。
+<pre> .box{ font: { size:12px; weight:bold; } }</pre>
+8\. 使用参数[ @mixin ]来声明混合宏。
+<pre> @mixin box-shadow($radius){ ... }</pre>
+9\. 调用已经定义好的混合宏。
+<pre> button{ @include box-shadow(5px); }</pre>
+10\. 继承父类样式需要使用[ @extend ]参数。
+<pre> @extend .btn;</pre>
+11\. 占位符[ % ]用于写需要被继承的类，不[ @extend ]的时候不会产生代码。
+<pre> %md5{ margin-top:5px; }</pre>
+12\. 代码块中包含变量的时候使用混合宏，但是多次调用的代码不会合并。
+如果不需要传递值的时候使用继承，不论是否调用都会生成对应样式代码。
+占位类似于继承，但不调用的时候不会产生额外代码。
+
+13\. 插值[ #{$var} ]不能使用在mixin中，但可以使用在extend中。
+<pre> @extend %mt5-#{$scale};</pre>
+14\. 注释方式[ // ]不会在目标文件生成，而[ /* */ ]会在目标文件生成。
+
+15\. 使用加法或减法的时候，不用类型的单位会使编译器报错。
+<pre> width: 20px + 1em;</pre>
+16\. 使用除法的时候，需要加上小括号，或者是有其他运算符，或者是变量或函数。
+<pre> width: (100px / 2); height: 100px / 2 + 10px;</pre>
+17\. 简单的for循环，从1循环到12。
+<pre> @for $i from 1 through 12 { ... }</pre>
+18\. 颜色的加法，会分为RGB三部分来相加。
+<pre> $color: #010203 + #040506; // #050709</pre>
+19\. 字符的加法，加完后会自动判断是否显示引号。
+<pre> content: "Foo " + Bar; /* 保留引号 */ font-family: sans- + "serif"; /* 不留引号 */</pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/02/08/sass-1/" data-id="cj1oz9yja001128ohv411o7di" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/01/18/angularjs-a-confirm/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          AngularJs中使用 a 标签弹出确认框
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/02/08/sass-2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Sass进阶学习篇</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AngularJs/">AngularJs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Other/">Other</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/PhotoShop/">PhotoShop</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Wordpress/">Wordpress</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/angular/">angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/angularjs/">angularjs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/facebook/">facebook</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ionic/">ionic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/language/">language</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/less/">less</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nav/">nav</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/photoshop/">photoshop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/plugin/">plugin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/roles/">roles</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/route/">route</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scope/">scope</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/social-share/">social share</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/typescript/">typescript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/">windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wordpress/">wordpress</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/angular/" style="font-size: 16.67px;">angular</a> <a href="/tags/angularjs/" style="font-size: 16.67px;">angularjs</a> <a href="/tags/css/" style="font-size: 16.67px;">css</a> <a href="/tags/facebook/" style="font-size: 10px;">facebook</a> <a href="/tags/html5/" style="font-size: 13.33px;">html5</a> <a href="/tags/ionic/" style="font-size: 10px;">ionic</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/language/" style="font-size: 10px;">language</a> <a href="/tags/less/" style="font-size: 10px;">less</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/nav/" style="font-size: 10px;">nav</a> <a href="/tags/photoshop/" style="font-size: 10px;">photoshop</a> <a href="/tags/plugin/" style="font-size: 10px;">plugin</a> <a href="/tags/roles/" style="font-size: 10px;">roles</a> <a href="/tags/route/" style="font-size: 10px;">route</a> <a href="/tags/scope/" style="font-size: 10px;">scope</a> <a href="/tags/social-share/" style="font-size: 10px;">social share</a> <a href="/tags/typescript/" style="font-size: 10px;">typescript</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a> <a href="/tags/wordpress/" style="font-size: 20px;">wordpress</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/04/17/angular-plugin-pdf/">Angular插件：PDF在线浏览</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/14/angular-filter-content/">Angular中自定义filter输出富文本内容</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/02/angular-http-json/">用Angular的HTTP服务以JSON方式获取数据</a>
+          </li>
+        
+          <li>
+            <a href="/2017/02/18/ps-cut/">前端工程师必备的PS切图技能</a>
+          </li>
+        
+          <li>
+            <a href="/2017/02/09/typescript-1/">TypeScript入门</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
