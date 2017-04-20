@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>ng-repeat的私有作用域scope | Yausing Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="起因：前几天用angular碰到个scope的问题，死活不能解决。 例子:  原因：ng-repeat在遍历创建列表的时候，ng-repeat里面输出的元素会有自己新的scope，也就是说这里的 cis 的作用域已经发生了变化，ng-init 中声明的 cis 和 ng-class 中的 cis 已经变成了不同的变量了。这样写相当于 cis[0] = citem.city_id, cis[1] =">
+<meta name="keywords" content="angular,angularjs,ionic,scope">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ng-repeat的私有作用域scope">
+<meta property="og:url" content="http://zhuoyousheng.cn/ng-repeat-private-scope/index.html">
+<meta property="og:site_name" content="Yausing Blog">
+<meta property="og:description" content="起因：前几天用angular碰到个scope的问题，死活不能解决。 例子:  原因：ng-repeat在遍历创建列表的时候，ng-repeat里面输出的元素会有自己新的scope，也就是说这里的 cis 的作用域已经发生了变化，ng-init 中声明的 cis 和 ng-class 中的 cis 已经变成了不同的变量了。这样写相当于 cis[0] = citem.city_id, cis[1] =">
+<meta property="og:image" content="http://www.zhuoyousheng.cn/wp-content/uploads/2016/12/cd211c014ec27d79ed1c30aee378618e.png">
+<meta property="og:updated_time" content="2017-04-20T03:14:06.646Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ng-repeat的私有作用域scope">
+<meta name="twitter:description" content="起因：前几天用angular碰到个scope的问题，死活不能解决。 例子:  原因：ng-repeat在遍历创建列表的时候，ng-repeat里面输出的元素会有自己新的scope，也就是说这里的 cis 的作用域已经发生了变化，ng-init 中声明的 cis 和 ng-class 中的 cis 已经变成了不同的变量了。这样写相当于 cis[0] = citem.city_id, cis[1] =">
+<meta name="twitter:image" content="http://www.zhuoyousheng.cn/wp-content/uploads/2016/12/cd211c014ec27d79ed1c30aee378618e.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Yausing Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">Yausing</a></h1>
+        </hgroup>
+
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/fain07" title="github">github</a>
+                            
+                                <a class="fl QQ" target="_blank" href="/229177252" title="QQ">QQ</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/angular/" style="font-size: 16.67px;">angular</a> <a href="/tags/angularjs/" style="font-size: 16.67px;">angularjs</a> <a href="/tags/css/" style="font-size: 16.67px;">css</a> <a href="/tags/facebook/" style="font-size: 10px;">facebook</a> <a href="/tags/html5/" style="font-size: 13.33px;">html5</a> <a href="/tags/ionic/" style="font-size: 10px;">ionic</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/language/" style="font-size: 10px;">language</a> <a href="/tags/less/" style="font-size: 10px;">less</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/nav/" style="font-size: 10px;">nav</a> <a href="/tags/photoshop/" style="font-size: 10px;">photoshop</a> <a href="/tags/plugin/" style="font-size: 10px;">plugin</a> <a href="/tags/roles/" style="font-size: 10px;">roles</a> <a href="/tags/route/" style="font-size: 10px;">route</a> <a href="/tags/scope/" style="font-size: 10px;">scope</a> <a href="/tags/social-share/" style="font-size: 10px;">social share</a> <a href="/tags/typescript/" style="font-size: 10px;">typescript</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a> <a href="/tags/wordpress/" style="font-size: 20px;">wordpress</a>
+                    </div>
+                </section>
+                
+                
+                
+
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">Yausing</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">Yausing</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="https://github.com/fain07" title="github">github</a>
+                    
+                        <a class="QQ" target="_blank" href="/229177252" title="QQ">QQ</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-ng-repeat-private-scope" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/ng-repeat-private-scope/" class="article-date">
+      <time datetime="2016-12-08T08:02:10.000Z" itemprop="datePublished">2016-12-08</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ng-repeat的私有作用域scope
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/AngularJs/">AngularJs</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angular/">angular</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angularjs/">angularjs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ionic/">ionic</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/scope/">scope</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>起因：前几天用angular碰到个scope的问题，死活不能解决。</p>
+<p>例子:</p>
+<p><img src="http://www.zhuoyousheng.cn/wp-content/uploads/2016/12/cd211c014ec27d79ed1c30aee378618e.png" alt=""></p>
+<p>原因：ng-repeat在遍历创建列表的时候，ng-repeat里面输出的元素会有自己新的scope，也就是说这里的 cis 的作用域已经发生了变化，ng-init 中声明的 cis 和 ng-class 中的 cis 已经变成了不同的变量了。这样写相当于 cis[0] = citem.city_id, cis[1] = citem.city_id, cis[2] = citem.city_id。<br><a id="more"></a></p>
+<p>解决方法，使用ng-model双向绑定的时候，建议绑定的对象属性比如ng-model=”L.cis”，而不是ng-model=”cis”，否则你会出现各种问题。</p>
+
+      
+      
+        <div class="page-reward">
+          <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang" title="打赏，支持一下">赏</a></p>
+          <div class="hide_box"></div>
+          <div class="shang_box">
+            <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()" title="关闭">×</a>
+            <div class="shang_tit">
+              <p>纯属好玩</p>
+            </div>
+            <div class="shang_payimg">
+              <img src="/img/alipayimg.jpg" alt="扫码支持" title="扫一扫" />
+            </div>
+              <div class="pay_explain">扫码打赏，你说多少就多少</div>
+            <div class="shang_payselect">
+              
+                <div class="pay_item checked" data-id="alipay">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/alipay.png" alt="支付宝" /></span>
+                </div>
+              
+              
+                <div class="pay_item" data-id="wechat">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/weixin.png" alt="微信" /></span>
+                </div>
+              
+            </div>
+            <div class="shang_info">
+              <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
+        <script type="text/javascript">
+          $(".pay_item").click(function(){
+            $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+            var dataid=$(this).attr('data-id');
+            $(".shang_payimg img").attr("src","/img/"+dataid+"img.jpg");
+            $("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
+          });
+          function dashangToggle(){
+            $(".hide_box").fadeToggle();
+            $(".shang_box").fadeToggle();
+          }
+        </script>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/ng-repeat-private-scope/">ng-repeat的私有作用域scope</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 Yausing 的个人博客">Yausing</a></p>
+        <p><span>发布时间:</span>2016年12月08日 - 16时02分</p>
+        <p><span>最后更新:</span>2017年04月20日 - 11时14分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/ng-repeat-private-scope/" title="ng-repeat的私有作用域scope">http://zhuoyousheng.cn/ng-repeat-private-scope/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://zhuoyousheng.cn/ng-repeat-private-scope/　　作者: Yausing" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/less-css-introdution/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          LESS的简单语法介绍
+        
+      </div>
+    </a>
+  
+  
+    <a href="/angular-localresizeimg/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Angular移动端上传压缩图片</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/less-css-introdution/" title="上一篇: LESS的简单语法介绍">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/angular-localresizeimg/" title="下一篇: Angular移动端上传压缩图片">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/angular-plugin-pdf/">Angular插件：PDF在线浏览</a></li><li class="post-list-item"><a class="post-list-link" href="/angular-filter-content/">Angular中自定义filter输出富文本内容</a></li><li class="post-list-item"><a class="post-list-link" href="/angular-http-json/">用Angular的HTTP服务以JSON方式获取数据</a></li><li class="post-list-item"><a class="post-list-link" href="/ps-cut/">前端工程师必备的PS切图技能</a></li><li class="post-list-item"><a class="post-list-link" href="/typescript-1/">TypeScript入门</a></li><li class="post-list-item"><a class="post-list-link" href="/sass-2/">Sass进阶学习篇</a></li><li class="post-list-item"><a class="post-list-link" href="/sass-1/">Sass入门学习篇</a></li><li class="post-list-item"><a class="post-list-link" href="/angularjs-a-confirm/">AngularJs中使用 a 标签弹出确认框</a></li><li class="post-list-item"><a class="post-list-link" href="/duan-she-li/">《断舍离》笔记：通向自由的26个丢弃</a></li><li class="post-list-item"><a class="post-list-link" href="/angular-localresizeimg/">Angular移动端上传压缩图片</a></li><li class="post-list-item"><a class="post-list-link" href="/ng-repeat-private-scope/">ng-repeat的私有作用域scope</a></li><li class="post-list-item"><a class="post-list-link" href="/less-css-introdution/">LESS的简单语法介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/win-add-route/">Win10下CMD添加静态路由</a></li><li class="post-list-item"><a class="post-list-link" href="/wordpress-mail-smtp/">WordPress的邮箱设置 (插件 WP-Mail-SMTP)</a></li><li class="post-list-item"><a class="post-list-link" href="/wordpress-nav-role-menu/">Wordpress中根据用户角色显示菜单</a></li><li class="post-list-item"><a class="post-list-link" href="/wordpress-iplocal-language/">WordPress通过IP归属自动切换选择语言</a></li><li class="post-list-item"><a class="post-list-link" href="/custom-wordpress-fackbook/">自定义分享WordPress到Facebook的内容(Open Graph Protocol)</a></li><li class="post-list-item"><a class="post-list-link" href="/html5-editor/">推荐10个易上手好用的H5网页编辑工具</a></li><li class="post-list-item"><a class="post-list-link" href="/wordpress-redirect-to/">WordPress登录后跳转到指定页面</a></li><li class="post-list-item"><a class="post-list-link" href="/css-white-space/">CSS取消文本换行white-space</a></li><li class="post-list-item"><a class="post-list-link" href="/linux-remind/">在linux中查看磁盘使用空间</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2017 Yausing
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+
+  </div>
+</body>
+</html>

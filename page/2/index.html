@@ -8,7 +8,7 @@
   <meta name="description" content="Share My Experience">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Yausing Blog">
-<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+<meta property="og:url" content="http://zhuoyousheng.cn/page/2/index.html">
 <meta property="og:site_name" content="Yausing Blog">
 <meta property="og:description" content="Share My Experience">
 <meta name="twitter:card" content="summary">
@@ -58,7 +58,7 @@
     <header id="header" class="inner">
         <a href="/" class="profilepic">
             
-            <img lazy-src="/img/head.gif" class="js-avatar">
+            <img lazy-src="/img/head.jpg" class="js-avatar">
             
         </a>
 
@@ -141,7 +141,7 @@
         <header id="header" class="inner">
             <a href="/" class="profilepic">
                 
-                    <img lazy-src="/img/head.gif" class="js-avatar">
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
                 
             </a>
             <hgroup>
@@ -168,10 +168,77 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-angular-localresizeimg" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/angular-localresizeimg/" class="article-date">
+      <time datetime="2016-12-21T06:23:12.000Z" itemprop="datePublished">2016-12-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/angular-localresizeimg/">Angular移动端上传压缩图片</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>背景：随着手机的发展，手机拍照之后照片越来越大，导致在移动端上传图片的时候变慢。所以需要把图片在本地压缩之后再上传。<br>
+          
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/AngularJs/">AngularJs</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angular/">angular</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angularjs/">angularjs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html5/">html5</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/angular-localresizeimg/#more">查看全部 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-ng-repeat-private-scope" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/12/08/ng-repeat-private-scope/" class="article-date">
+      <a href="/ng-repeat-private-scope/" class="article-date">
       <time datetime="2016-12-08T08:02:10.000Z" itemprop="datePublished">2016-12-08</time>
 </a>
     </div>
@@ -185,7 +252,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/08/ng-repeat-private-scope/">ng-repeat的私有作用域scope</a>
+      <a class="article-title" href="/ng-repeat-private-scope/">ng-repeat的私有作用域scope</a>
     </h1>
   
 
@@ -195,12 +262,11 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>起因：前几天用angular碰到个scope的问题，死活不能解决。</p>
+              <p>起因：前几天用angular碰到个scope的问题，死活不能解决。</p>
 <p>例子:</p>
 <p><img src="http://www.zhuoyousheng.cn/wp-content/uploads/2016/12/cd211c014ec27d79ed1c30aee378618e.png" alt=""></p>
-<p>原因：ng-repeat在遍历创建列表的时候，ng-repeat里面输出的元素会有自己新的scope，也就是说这里的 cis 的作用域已经发生了变化，ng-init 中声明的 cis 和 ng-class 中的 cis 已经变成了不同的变量了。这样写相当于 cis[0] = citem.city_id, cis[1] = citem.city_id, cis[2] = citem.city_id。</p>
-<p>解决方法，使用ng-model双向绑定的时候，建议绑定的对象属性比如ng-model=”L.cis”，而不是ng-model=”cis”，否则你会出现各种问题。</p>
-
+<p>原因：ng-repeat在遍历创建列表的时候，ng-repeat里面输出的元素会有自己新的scope，也就是说这里的 cis 的作用域已经发生了变化，ng-init 中声明的 cis 和 ng-class 中的 cis 已经变成了不同的变量了。这样写相当于 cis[0] = citem.city_id, cis[1] = citem.city_id, cis[2] = citem.city_id。<br>
+          
       
       
     </div>
@@ -218,6 +284,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angular/">angular</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angularjs/">angularjs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ionic/">ionic</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/scope/">scope</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a  href="/ng-repeat-private-scope/#more">查看全部 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -238,7 +308,7 @@
     <article id="post-less-css-introdution" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/10/12/less-css-introdution/" class="article-date">
+      <a href="/less-css-introdution/" class="article-date">
       <time datetime="2016-10-12T09:13:17.000Z" itemprop="datePublished">2016-10-12</time>
 </a>
     </div>
@@ -252,7 +322,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/12/less-css-introdution/">LESS的简单语法介绍</a>
+      <a class="article-title" href="/less-css-introdution/">LESS的简单语法介绍</a>
     </h1>
   
 
@@ -262,9 +332,9 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Less 笔记</p>
-<p>1、多出来一种注释方式【双斜杠//】，这个不会被编译到CSS文件。【/**/】会被编译到CSS文件。<br>2、变量定义，用@符号定义，用冒号赋值，【@变量名:值】。<br>3、声明css样式的时候可以写个括号，并引用参数，【.css-name(@param)】，此时必须传值。<br>4、声明带参数的css样式的时候，可以带上默认值，【.css-name(@param:value)】。<br>5、带参数的用来写一些重复使用的代码比较有用，比如带-webkit的声明。<br>6、匹配模式相当于其他语言的IF，声明时候带固定的参数，【.triangle(bottom,@param)】。<br>7、对于颜色进行运算的时候，颜色会由16进制转化为十进制，【color:#fff-20】，相当于【color:#feb】。<br>8、有嵌套的功能，比如为list下面的多个样式进行声明的时候，不用重复些list，【.list{…}】。<br>9、例如为a标签写hover属性的时候，【&amp;:hover】中的【&amp;】代表上层选择器a。<br>10、【@arguments】会把所有的属性都带进来。<br>11、对于不需要编译的代码，用【~’’】把不需要的加到单引号中。<br>12、在函数引用后面加上【!important】，例如【.hello() !important;】，该函数下面的所有样式都会加上【!important】。</p>
-
+              <p>Less 笔记</p>
+<p>1、多出来一种注释方式【双斜杠//】，这个不会被编译到CSS文件。【/**/】会被编译到CSS文件。<br>2、变量定义，用@符号定义，用冒号赋值，【@变量名:值】。<br>3、声明css样式的时候可以写个括号，并引用参数，【.css-name(@param)】，此时必须传值。<br>4、声明带参数的css样式的时候，可以带上默认值，【.css-name(@param:value)】。<br>
+          
       
       
     </div>
@@ -282,6 +352,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/less/">less</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a  href="/less-css-introdution/#more">查看全部 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -302,7 +376,7 @@
     <article id="post-win-add-route" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/09/09/win-add-route/" class="article-date">
+      <a href="/win-add-route/" class="article-date">
       <time datetime="2016-09-09T09:11:57.000Z" itemprop="datePublished">2016-09-09</time>
 </a>
     </div>
@@ -316,7 +390,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/09/win-add-route/">Win10下CMD添加静态路由</a>
+      <a class="article-title" href="/win-add-route/">Win10下CMD添加静态路由</a>
     </h1>
   
 
@@ -326,10 +400,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>使用cmd设置添加电脑上静态路由：<br>1：在“运行”窗口输入cmd(按WIN+R打开运行窗口)，然后回车进入命令行，输入 route add 10.253.251.0 mask 255.255.255.0 -p 192.254.1.1。其中10.253.251.0是源地址，255.255.255.0是源地址掩码，192.254.1.1是目标地址。</p>
-<p>2：如何查看已添加的路由?输入 route print，然后回车出现图中话红线的内容就是我们刚才添加的路由。</p>
-<p>3：那么我们如何删除已添加的路由把这条命令 route add 10.253.251.0 mask 255.255.255.0 -p 192.254.1.1 中的add 改成 delete ，然后回车就可以啦</p>
-
+              <p>使用cmd设置添加电脑上静态路由：<br>1：在“运行”窗口输入cmd(按WIN+R打开运行窗口)，然后回车进入命令行，输入 route add 10.253.251.0 mask 255.255.255.0 -p 192.254.1.1。其中10.253.251.0是源地址，255.255.255.0是源地址掩码，192.254.1.1是目标地址。<br>
+          
       
       
     </div>
@@ -347,6 +419,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/route/">route</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/windows/">windows</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a  href="/win-add-route/#more">查看全部 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -367,7 +443,7 @@
     <article id="post-wordpress-mail-smtp" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/08/30/wordpress-mail-smtp/" class="article-date">
+      <a href="/wordpress-mail-smtp/" class="article-date">
       <time datetime="2016-08-30T07:17:03.000Z" itemprop="datePublished">2016-08-30</time>
 </a>
     </div>
@@ -381,7 +457,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/30/wordpress-mail-smtp/">WordPress的邮箱设置 (插件 WP-Mail-SMTP)</a>
+      <a class="article-title" href="/wordpress-mail-smtp/">WordPress的邮箱设置 (插件 WP-Mail-SMTP)</a>
     </h1>
   
 
@@ -391,14 +467,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>在WordPress默认注册中，需要填写邮箱地址并且通过邮箱地址设置密码。但是WordPress的邮箱需要设置之后才能使用，这里用一个Gmail邮箱为例。</p>
-<ol>
-<li>在插件中心下载插件 WP-Mail-SMTP</li>
-<li>编辑WP-Mail-SMTP的设置，SMTP Host设置为smtp.gmail.com，端口设置为465，并且是用SSL通道。</li>
-<li>修改wp-login.php:328中的文件，主要是为了修改发送的邮件的结尾不要带上尖括号。</li>
-<li>修改wp-include/pluggable.php:1787，目的是和步骤三一样。</li>
-</ol>
-
+              <p>在WordPress默认注册中，需要填写邮箱地址并且通过邮箱地址设置密码。但是WordPress的邮箱需要设置之后才能使用，这里用一个Gmail邮箱为例。<br>
+          
       
       
     </div>
@@ -416,6 +486,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wordpress/">wordpress</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a  href="/wordpress-mail-smtp/#more">查看全部 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -436,7 +510,7 @@
     <article id="post-wordpress-nav-role-menu" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/08/29/wordpress-nav-role-menu/" class="article-date">
+      <a href="/wordpress-nav-role-menu/" class="article-date">
       <time datetime="2016-08-29T02:47:59.000Z" itemprop="datePublished">2016-08-29</time>
 </a>
     </div>
@@ -450,7 +524,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/29/wordpress-nav-role-menu/">Wordpress中根据用户角色显示菜单</a>
+      <a class="article-title" href="/wordpress-nav-role-menu/">Wordpress中根据用户角色显示菜单</a>
     </h1>
   
 
@@ -460,9 +534,9 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>插件名：Nav Menu Roles    作者：Kathy Darling    <a href="http://wordpress.org/plugins/nav-menu-roles/" target="_blank" rel="external">下载 Nav Menu Roles</a></p>
-<p>有时候，我们需要根据用户是否登录，或者当前用户是什么角色来决定显示哪些菜单。虽然我们可以注册多个菜单，然后结合WordPress条件标签来达到目的。比如，如果用户没有登录，那就调用菜单1，如果登录，就调用菜单2。但是这样就需要注册很多菜单，也需要你进行菜单设置，这无疑增加了我们的负担。</p>
-
+              <p>插件名：Nav Menu Roles    作者：Kathy Darling    <a href="http://wordpress.org/plugins/nav-menu-roles/">下载 Nav Menu Roles</a></p>
+<p>有时候，我们需要根据用户是否登录，或者当前用户是什么角色来决定显示哪些菜单。虽然我们可以注册多个菜单，然后结合WordPress条件标签来达到目的。比如，如果用户没有登录，那就调用菜单1，如果登录，就调用菜单2。但是这样就需要注册很多菜单，也需要你进行菜单设置，这无疑增加了我们的负担。<br>
+          
       
       
     </div>
@@ -480,6 +554,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nav/">nav</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/roles/">roles</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wordpress/">wordpress</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a  href="/wordpress-nav-role-menu/#more">查看全部 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -500,7 +578,7 @@
     <article id="post-wordpress-iplocal-language" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/08/29/wordpress-iplocal-language/" class="article-date">
+      <a href="/wordpress-iplocal-language/" class="article-date">
       <time datetime="2016-08-29T02:24:41.000Z" itemprop="datePublished">2016-08-29</time>
 </a>
     </div>
@@ -514,7 +592,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/29/wordpress-iplocal-language/">WordPress通过IP归属自动切换选择语言</a>
+      <a class="article-title" href="/wordpress-iplocal-language/">WordPress通过IP归属自动切换选择语言</a>
     </h1>
   
 
@@ -524,15 +602,10 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>首先需要安装两个插件：1.GeoIP Detection (Yellow Tree)用于判断得到IP所在地 2.Polylang (Frédéric Demarle)自动切换语言。</p>
+              <p>首先需要安装两个插件：1.GeoIP Detection (Yellow Tree)用于判断得到IP所在地 2.Polylang (Frédéric Demarle)自动切换语言。</p>
 <p>1、在Polylang的设置中打开浏览器自动检测。</p>
-<p>2、如果是简单的使用判断大陆\非大陆，去<a href="http://dev.maxmind.com/geoip/geoip2/geolite2/下载一个country版的IP库包。" target="_blank" rel="external">http://dev.maxmind.com/geoip/geoip2/geolite2/下载一个country版的IP库包。</a></p>
-<p>3、在/wp-content/plugins/polylang/frontend/choose_lang.php中，首行添加以下代码。</p>
-<pre class="prettyprint lang-php">include "../../geoip-detect/api.php";</pre>
-4、上面文件中的函数get_preferred_browser_language中的首行添加以下代码：
-<pre class="prettyprint lang-php">$viewer_location_info = geoip_detect2_get_info_from_ip($_SERVER['REMOTE_ADDR'], NULL); 
-$viewer_location = $viewer_location_info-&gt;country-&gt;isoCode; 
-if($viewer_location == 'CN')  {return 'cn';}</pre>
+<p>2、如果是简单的使用判断大陆\非大陆，去<a href="http://dev.maxmind.com/geoip/geoip2/geolite2/下载一个country版的IP库包。">http://dev.maxmind.com/geoip/geoip2/geolite2/下载一个country版的IP库包。</a><br>
+          
       
       
     </div>
@@ -550,6 +623,10 @@ if($viewer_location == 'CN')  {return 'cn';}</pre>
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/language/">language</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wordpress/">wordpress</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a  href="/wordpress-iplocal-language/#more">查看全部 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -570,7 +647,7 @@ if($viewer_location == 'CN')  {return 'cn';}</pre>
     <article id="post-custom-wordpress-fackbook" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/08/26/custom-wordpress-fackbook/" class="article-date">
+      <a href="/custom-wordpress-fackbook/" class="article-date">
       <time datetime="2016-08-26T08:38:37.000Z" itemprop="datePublished">2016-08-26</time>
 </a>
     </div>
@@ -584,7 +661,7 @@ if($viewer_location == 'CN')  {return 'cn';}</pre>
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/26/custom-wordpress-fackbook/">自定义分享WordPress到Facebook的内容(Open Graph Protocol)</a>
+      <a class="article-title" href="/custom-wordpress-fackbook/">自定义分享WordPress到Facebook的内容(Open Graph Protocol)</a>
     </h1>
   
 
@@ -594,11 +671,9 @@ if($viewer_location == 'CN')  {return 'cn';}</pre>
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p><span style="line-height: 0px;"></span>以下代码段是加入wordpress主题中的header.php文件中的。也可以用于非WordPress，目的是在head里面加入社交分享可以识别的meta标签。</p>
-<p>同时有个调试工具的链接：<a href="https://developers.facebook.com/tools/debug/sharing" target="_blank" rel="external">https://developers.facebook.com/tools/debug/sharing</a> 。更新了meta之后，要去这个网站同样更新一下。</p>
-<!--?php $thumb = get_post_meta($post-&gt;ID,'_thumbnail_id',false); $thumb = wp_get_attachment_image_src($thumb[0], false); $thumb = $thumb[0]; $default_img = get_bloginfo('stylesheet_directory').'/images/default_icon.jpg'; ?-->
-<p><pre class="brush:php;toolbar:false">&lt;?php<br>  $thumb = get_post_meta($post-&gt;ID,’_thumbnail_id’,false);<br>  $thumb = wp_get_attachment_image_src($thumb[0], false);<br>  $thumb = $thumb[0];<br>  $default_img = get_bloginfo(‘stylesheet_directory’).’/images/default_icon.jpg’;<br>?&gt;<br>&lt;?php if(is_single() || is_page()) { ?&gt;<br>&lt;meta property=”og:type” content=”article” /&gt;<br>&lt;meta property=”og:title” content=”&lt;?php single_post_title(‘’); ?&gt;” /&gt;<br>&lt;meta property=”og:description” content=”&lt;?php<br>$out_excerpt = str_replace(array(“\r\n”, “\r”, “\n”), “”, get_the_excerpt());<br>echo apply_filters(‘the_excerpt_rss’,<br>$out_excerpt);<br>?&gt;” /&gt;<br>&lt;meta property=”og:url” content=”&lt;?php the_permalink(); ?&gt;”/&gt;<br>&lt;meta property=”og:image” content=”&lt;?php if ( $thumb[0] == null ) { echo $default_img; } else { echo $thumb; } ?&gt;” /&gt;<br>&lt;?php  } else { ?&gt;<br>&lt;meta property=”og:type” content=”article” /&gt;<br>&lt;meta property=”og:title” content=”&lt;?php bloginfo(‘name’); ?&gt;” /&gt;<br>&lt;meta property=”og:url” content=”&lt;?php bloginfo(‘url’); ?&gt;”/&gt;<br>&lt;meta property=”og:description” content=”&lt;?php bloginfo(‘description’); ?&gt;” /&gt;<br>    &lt;meta property=”og:image” content=”&lt;?php  if ( $thumb[0] == null ) { echo $default_img; } else { echo $thumb; } ?&gt;” /&gt;<br>&lt;?php  }  ?&gt;</pre><br><!--?php } ?--></p>
-
+              <p><span style="line-height: 0px;"></span>以下代码段是加入wordpress主题中的header.php文件中的。也可以用于非WordPress，目的是在head里面加入社交分享可以识别的meta标签。</p>
+<p>同时有个调试工具的链接：<a href="https://developers.facebook.com/tools/debug/sharing">https://developers.facebook.com/tools/debug/sharing</a> 。更新了meta之后，要去这个网站同样更新一下。<br>
+          
       
       
     </div>
@@ -616,6 +691,10 @@ if($viewer_location == 'CN')  {return 'cn';}</pre>
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/facebook/">facebook</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/social-share/">social share</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wordpress/">wordpress</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a  href="/custom-wordpress-fackbook/#more">查看全部 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -636,7 +715,7 @@ if($viewer_location == 'CN')  {return 'cn';}</pre>
     <article id="post-html5-editor" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/08/25/html5-editor/" class="article-date">
+      <a href="/html5-editor/" class="article-date">
       <time datetime="2016-08-25T09:35:43.000Z" itemprop="datePublished">2016-08-25</time>
 </a>
     </div>
@@ -650,7 +729,7 @@ if($viewer_location == 'CN')  {return 'cn';}</pre>
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/25/html5-editor/">推荐10个易上手好用的H5网页编辑工具</a>
+      <a class="article-title" href="/html5-editor/">推荐10个易上手好用的H5网页编辑工具</a>
     </h1>
   
 
@@ -660,10 +739,8 @@ if($viewer_location == 'CN')  {return 'cn';}</pre>
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>许多公司开发了各种工具平台用以快速制作简易移动端HTML5页面。下面介绍几个编程小白也能使用的微网页、微画报或场景应用的制作工具。排名不分先后，功能大同小异，可按照自身需求挑选。</p>
-<p>1、初页——初页作为手机端制作动态海报的app，面向C端，门槛极低，上手简单容易，可在App store免费下载，直接在手机上编辑创作。众多模板版式，任君挑选，也提供定制服务。<br>2、Maka——Maka目前只有Web端，IOS和Android版本还未上线，模板丰富，有多种动态效果以及交互效果可供选择，除收费版外提供免费版，不过免费版不提供外链模板。<br>3、Liveapp 场景应用/云来——云来Liveapp是面向企业方的移动场景APP云服务平台，许多知名企业都在使用，购买场景应用，近日云来开放了免费体验，“认证企业”可以申请获取，体验时长31天。<br>4、秀制作——“秀制作”为秀米出品，免费提供多种模板，傻瓜式操作，可以外链，可与秀米图文排版双剑合璧。<br>5、点点客海报——点点客作为微信第三方开发服务商，推出了免费的点点客海报，无需注册，扫码登录，即可编辑动态海报，多种效果、翻页动画、背景音乐、可统计浏览量，也提供定制。<br>6、兔展——兔展目前只支持Safari和chrome浏览器，承诺免费永久开放所有功能。<br>7、易企秀——免费，有多种动态模板，能实现文本和图片带有滑动、隐现、放大缩小等动态效果。同时有ios 移动客户端，在手机上也可创建场景应用，以及数据统计功能。<br>8、品趣——时趣出品，为中小企业定制的社会化媒体营销软件。<br>9、Epub360意派——为专业设计师打造的交互设计利器，交互效果强大，动画效果出色，虽然简单傻瓜式的模板不多，但自由度相对较高。<br>10、Vxplo——专注在线交互设计，功能强大，同epub360一样适合专业设计师，可以零代码制作轻应用。</p>
-<p>转自：<a href="http://www.360doc.com/content/15/0117/07/11564572_441470974.shtml" target="_blank" rel="external">http://www.360doc.com/content/15/0117/07/11564572_441470974.shtml</a></p>
-
+              <p>许多公司开发了各种工具平台用以快速制作简易移动端HTML5页面。下面介绍几个编程小白也能使用的微网页、微画报或场景应用的制作工具。排名不分先后，功能大同小异，可按照自身需求挑选。<br>
+          
       
       
     </div>
@@ -681,6 +758,10 @@ if($viewer_location == 'CN')  {return 'cn';}</pre>
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html5/">html5</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a  href="/html5-editor/#more">查看全部 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -701,7 +782,7 @@ if($viewer_location == 'CN')  {return 'cn';}</pre>
     <article id="post-wordpress-redirect-to" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/08/23/wordpress-redirect-to/" class="article-date">
+      <a href="/wordpress-redirect-to/" class="article-date">
       <time datetime="2016-08-23T13:59:45.000Z" itemprop="datePublished">2016-08-23</time>
 </a>
     </div>
@@ -715,7 +796,7 @@ if($viewer_location == 'CN')  {return 'cn';}</pre>
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/23/wordpress-redirect-to/">WordPress登录后跳转到指定页面</a>
+      <a class="article-title" href="/wordpress-redirect-to/">WordPress登录后跳转到指定页面</a>
     </h1>
   
 
@@ -725,9 +806,9 @@ if($viewer_location == 'CN')  {return 'cn';}</pre>
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>WordPress默认登录和注销之后会跳转到后台管理页面，但是对于普通用户来说并不需要去后台管理界面，所以这时候需要修改回跳地址。</p>
-<p>打开wordpress/wp-login.php，寻找$redirect_to 并强制修改。</p>
-
+              <p>WordPress默认登录和注销之后会跳转到后台管理页面，但是对于普通用户来说并不需要去后台管理界面，所以这时候需要修改回跳地址。</p>
+<p>打开wordpress/wp-login.php，寻找$redirect_to 并强制修改。<br>
+          
       
       
     </div>
@@ -746,68 +827,9 @@ if($viewer_location == 'CN')  {return 'cn';}</pre>
     </div>
 
       
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-css-white-space" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/08/22/css-white-space/" class="article-date">
-      <time datetime="2016-08-22T04:46:14.000Z" itemprop="datePublished">2016-08-22</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/22/css-white-space/">CSS取消文本换行white-space</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>white-space：normal | pre | nowrap | pre-wrap | pre-line<br>默认值：normal<br>取值：<br>normal：默认处理方式。<br>pre：用等宽字体显示预先格式化的文本，不合并文字间的空白距离，当文字超出边界时不换行。可查阅pre对象<br>nowrap：强制在同一行内显示所有文本，合并文本间的多余空白，直到文本结束或者遭遇br对象。<br>pre-wrap：用等宽字体显示预先格式化的文本，不合并文字间的空白距离，当文字碰到边界时发生换行。<br>pre-line：保持文本的换行，不保留文字间的空白距离，当文字碰到边界时发生换行。</p>
-
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/CSS/">CSS</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
-    </div>
-
+        <p class="article-more-link">
+          <a  href="/wordpress-redirect-to/#more">查看全部 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>

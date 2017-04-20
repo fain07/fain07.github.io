@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>TypeScript入门 | Yausing Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="TypeScript入门 这是学AngularJS 2 所需要学的知识。  声明字符串的时候，用[ `` ]（键盘上1左边那个键）来括住字符串，可以在字符串换行，TS会转为[ \n ]。  在[ `` ]中可以写变量和函数的调用。 $&amp;#123;var&amp;#125; $&amp;#123;function()&amp;#125;`) ```1233. 使用[ \`\` ]调用函数的时候，可以自动拆分字符串。```">
+<meta name="keywords" content="javascript,typescript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TypeScript入门">
+<meta property="og:url" content="http://zhuoyousheng.cn/typescript-1/index.html">
+<meta property="og:site_name" content="Yausing Blog">
+<meta property="og:description" content="TypeScript入门 这是学AngularJS 2 所需要学的知识。  声明字符串的时候，用[ `` ]（键盘上1左边那个键）来括住字符串，可以在字符串换行，TS会转为[ \n ]。  在[ `` ]中可以写变量和函数的调用。 $&amp;#123;var&amp;#125; $&amp;#123;function()&amp;#125;`) ```1233. 使用[ \`\` ]调用函数的时候，可以自动拆分字符串。```">
+<meta property="og:updated_time" content="2017-04-20T03:50:19.437Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="TypeScript入门">
+<meta name="twitter:description" content="TypeScript入门 这是学AngularJS 2 所需要学的知识。  声明字符串的时候，用[ `` ]（键盘上1左边那个键）来括住字符串，可以在字符串换行，TS会转为[ \n ]。  在[ `` ]中可以写变量和函数的调用。 $&amp;#123;var&amp;#125; $&amp;#123;function()&amp;#125;`) ```1233. 使用[ \`\` ]调用函数的时候，可以自动拆分字符串。```">
+  
+    <link rel="alternative" href="/atom.xml" title="Yausing Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">Yausing</a></h1>
+        </hgroup>
+
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/fain07" title="github">github</a>
+                            
+                                <a class="fl QQ" target="_blank" href="/229177252" title="QQ">QQ</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/angular/" style="font-size: 16.67px;">angular</a> <a href="/tags/angularjs/" style="font-size: 16.67px;">angularjs</a> <a href="/tags/css/" style="font-size: 16.67px;">css</a> <a href="/tags/facebook/" style="font-size: 10px;">facebook</a> <a href="/tags/html5/" style="font-size: 13.33px;">html5</a> <a href="/tags/ionic/" style="font-size: 10px;">ionic</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/language/" style="font-size: 10px;">language</a> <a href="/tags/less/" style="font-size: 10px;">less</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/nav/" style="font-size: 10px;">nav</a> <a href="/tags/photoshop/" style="font-size: 10px;">photoshop</a> <a href="/tags/plugin/" style="font-size: 10px;">plugin</a> <a href="/tags/roles/" style="font-size: 10px;">roles</a> <a href="/tags/route/" style="font-size: 10px;">route</a> <a href="/tags/scope/" style="font-size: 10px;">scope</a> <a href="/tags/social-share/" style="font-size: 10px;">social share</a> <a href="/tags/typescript/" style="font-size: 10px;">typescript</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a> <a href="/tags/wordpress/" style="font-size: 20px;">wordpress</a>
+                    </div>
+                </section>
+                
+                
+                
+
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">Yausing</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">Yausing</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="https://github.com/fain07" title="github">github</a>
+                    
+                        <a class="QQ" target="_blank" href="/229177252" title="QQ">QQ</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-typescript-1" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/typescript-1/" class="article-date">
+      <time datetime="2017-02-09T07:31:00.000Z" itemprop="datePublished">2017-02-09</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      TypeScript入门
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/AngularJs/">AngularJs</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/typescript/">typescript</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>TypeScript入门</p>
+<p>这是学AngularJS 2 所需要学的知识。</p>
+<ol>
+<li><p>声明字符串的时候，用[ `` ]（键盘上1左边那个键）来括住字符串，可以在字符串换行，TS会转为[ \n ]。</p>
+</li>
+<li><p>在[ `` ]中可以写变量和函数的调用。</p>
+<figure class="highlight plain"><figcaption><span>$&#123;var&#125; $&#123;function()&#125;`) ```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">3. 使用[ \`\` ]调用函数的时候，可以自动拆分字符串。</div><div class="line">``` function test(a,b,c)&#123;&#125; test`hello $&#123;ee&#125; is $&#123;ff&#125;`</div></pre></td></tr></table></figure>
+</li>
+<li><p>声明变量后冒号填写变量类型，之后赋值的时候会检查类型。</p>
+<figure class="highlight plain"><figcaption><span>myname: string = 'John';</span><a href="/*">number, boolean */```</a></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;!-- more --&gt;</div><div class="line">5. 变量类型为[ any ]的时候，可以赋所有值。</div><div class="line">``` var alias: any = &apos;ii&apos;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>函数的类型可以设置为[ void ]。</p>
+<figure class="highlight plain"><figcaption><span>test(): void&#123; ... &#125;```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">7. 为函数的参数指定默认值。</div><div class="line">``` function test(a: string = &apos;jojo&apos;)&#123; ... &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>函数参数中需要使用可选参数的时候，在变量后面加上问号。</p>
+<figure class="highlight plain"><figcaption><span>test(a?: string)&#123; ... &#125;```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">9. 函数参数传入任意数量的参数。</div><div class="line">``` function func1(...args)&#123; ... &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>用关键字[ yield ]可以暂停代码执行，ES6特性，TypeScript暂不支持，用[ next() ]调用。</p>
+</li>
+<li><p>通过函数关键字后面加上星号声明generator函数。</p>
+<figure class="highlight plain"><figcaption><span>getStockPrice(stock) &#123; ... &#125;```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">12. 析构表达式可以拆分获取的对象为变量，变量名需要对应，或者取别名。</div><div class="line">``` function getStock()&#123; return &#123;code: &quot;IBM&quot;, price:&#123; price1: 100, price2: 200 &#125; &#125; </div><div class="line"> var &#123;code: codex, price: &#123;price2&#125;&#125; = getStock(); /* codex = &quot;IBM&quot;, price = 200 */</div></pre></td></tr></table></figure>
+</li>
+<li><p>用析构表达式拆分数组里面的数据。</p>
+<figure class="highlight plain"><figcaption><span>array1 = [1, 2, 3, 4, 5];</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var [number1, , number3, ...other] = array1; /* 1, 3, [4, 5] */ ]</div></pre></td></tr></table></figure>
+</li>
+<li><p>箭头表达式，用来声明匿名函数，消除传统匿名函数的this指针问题。</p>
+<figure class="highlight plain"><figcaption><span>sum = &#123;arg1, arg2&#125; =&gt; &#123; arg1 + arg2; &#125;```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">15. 循环语法[ forEach(), for in, for of ]</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>forEach(): 无法在循环中跳出循环，且无法循环属性值。<br>[ for(var n in array){ … } ]: 循环数组的key值，可以用[ break ]跳出。<br>[ for(var n of array){ … } ]: 循环数组的value值，可以用[ break ]跳出。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">16. TypeScript的核心是类，大部分代码都是写在类里面的。</div><div class="line">``` class Person&#123; name; eat()&#123; ... &#125; &#125;   var p1 = new Person();</div></pre></td></tr></table></figure></p>
+<ol>
+<li><p>class内的变量有三种访问控制符，默认是[ public ]，还有[ private, protected ]。</p>
+</li>
+<li><p>在class内写[ constructor(public name:string){ … } ]作为构造函数，只有实例化时才会调用。</p>
+</li>
+<li><p>用[ extends ]声明类的继承关系。</p>
+<figure class="highlight plain"><figcaption><span>Employee extends Person &#123; ... &#125;```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">20. 用[ super ]调用父类的构造函数，子类另写构造函数的时候必须调用父类的构造函数。</div><div class="line"></div><div class="line">21. [ interface ]可以作为参数的类型。</div><div class="line">``` interface IPerson&#123; ... &#125; class Person&#123; constructor(public config: IPerson)&#123; ... &#125; &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>[ interface ]可以用于class的实现，class必须重写接口中的方法。</p>
+<figure class="highlight plain"><figcaption><span>Person implement IPerson&#123; ... &#125;```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">23. [ export ]表示对外暴露，加在变量或方法或类的声明前面，只有对外暴露才能在其他文件[ import ]。</div><div class="line">``` export var name = &quot;hoho&quot;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>注解用[ @ ]来表示，在AngularJS 2 中解释为需要引入的文件。</p>
+<figure class="highlight plain"><figcaption><span>'app-root', templateUrl: './app-com.html', styleUrls: ['./app-s.css'] &#125;)```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">25. 在TypeScript中使用已有的工具包，其后缀名是.d.ts。</div><div class="line">``` https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/jquery</div></pre></td></tr></table></figure></li>
+</ol>
+
+      
+      
+        <div class="page-reward">
+          <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang" title="打赏，支持一下">赏</a></p>
+          <div class="hide_box"></div>
+          <div class="shang_box">
+            <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()" title="关闭">×</a>
+            <div class="shang_tit">
+              <p>纯属好玩</p>
+            </div>
+            <div class="shang_payimg">
+              <img src="/img/alipayimg.jpg" alt="扫码支持" title="扫一扫" />
+            </div>
+              <div class="pay_explain">扫码打赏，你说多少就多少</div>
+            <div class="shang_payselect">
+              
+                <div class="pay_item checked" data-id="alipay">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/alipay.png" alt="支付宝" /></span>
+                </div>
+              
+              
+                <div class="pay_item" data-id="wechat">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/weixin.png" alt="微信" /></span>
+                </div>
+              
+            </div>
+            <div class="shang_info">
+              <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
+        <script type="text/javascript">
+          $(".pay_item").click(function(){
+            $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+            var dataid=$(this).attr('data-id');
+            $(".shang_payimg img").attr("src","/img/"+dataid+"img.jpg");
+            $("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
+          });
+          function dashangToggle(){
+            $(".hide_box").fadeToggle();
+            $(".shang_box").fadeToggle();
+          }
+        </script>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/typescript-1/">TypeScript入门</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 Yausing 的个人博客">Yausing</a></p>
+        <p><span>发布时间:</span>2017年02月09日 - 15时31分</p>
+        <p><span>最后更新:</span>2017年04月20日 - 11时50分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/typescript-1/" title="TypeScript入门">http://zhuoyousheng.cn/typescript-1/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://zhuoyousheng.cn/typescript-1/　　作者: Yausing" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/sass-2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Sass进阶学习篇
+        
+      </div>
+    </a>
+  
+  
+    <a href="/ps-cut/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">前端工程师必备的PS切图技能</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/sass-2/" title="上一篇: Sass进阶学习篇">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/ps-cut/" title="下一篇: 前端工程师必备的PS切图技能">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/angular-plugin-pdf/">Angular插件：PDF在线浏览</a></li><li class="post-list-item"><a class="post-list-link" href="/angular-filter-content/">Angular中自定义filter输出富文本内容</a></li><li class="post-list-item"><a class="post-list-link" href="/angular-http-json/">用Angular的HTTP服务以JSON方式获取数据</a></li><li class="post-list-item"><a class="post-list-link" href="/ps-cut/">前端工程师必备的PS切图技能</a></li><li class="post-list-item"><a class="post-list-link" href="/typescript-1/">TypeScript入门</a></li><li class="post-list-item"><a class="post-list-link" href="/sass-2/">Sass进阶学习篇</a></li><li class="post-list-item"><a class="post-list-link" href="/sass-1/">Sass入门学习篇</a></li><li class="post-list-item"><a class="post-list-link" href="/angularjs-a-confirm/">AngularJs中使用 a 标签弹出确认框</a></li><li class="post-list-item"><a class="post-list-link" href="/duan-she-li/">《断舍离》笔记：通向自由的26个丢弃</a></li><li class="post-list-item"><a class="post-list-link" href="/angular-localresizeimg/">Angular移动端上传压缩图片</a></li><li class="post-list-item"><a class="post-list-link" href="/ng-repeat-private-scope/">ng-repeat的私有作用域scope</a></li><li class="post-list-item"><a class="post-list-link" href="/less-css-introdution/">LESS的简单语法介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/win-add-route/">Win10下CMD添加静态路由</a></li><li class="post-list-item"><a class="post-list-link" href="/wordpress-mail-smtp/">WordPress的邮箱设置 (插件 WP-Mail-SMTP)</a></li><li class="post-list-item"><a class="post-list-link" href="/wordpress-nav-role-menu/">Wordpress中根据用户角色显示菜单</a></li><li class="post-list-item"><a class="post-list-link" href="/wordpress-iplocal-language/">WordPress通过IP归属自动切换选择语言</a></li><li class="post-list-item"><a class="post-list-link" href="/custom-wordpress-fackbook/">自定义分享WordPress到Facebook的内容(Open Graph Protocol)</a></li><li class="post-list-item"><a class="post-list-link" href="/html5-editor/">推荐10个易上手好用的H5网页编辑工具</a></li><li class="post-list-item"><a class="post-list-link" href="/wordpress-redirect-to/">WordPress登录后跳转到指定页面</a></li><li class="post-list-item"><a class="post-list-link" href="/css-white-space/">CSS取消文本换行white-space</a></li><li class="post-list-item"><a class="post-list-link" href="/linux-remind/">在linux中查看磁盘使用空间</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2017 Yausing
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+
+  </div>
+</body>
+</html>
