@@ -5,17 +5,17 @@
   
   <title>Win10下CMD添加静态路由 | Yausing Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="使用cmd设置添加电脑上静态路由：1：在“运行”窗口输入cmd(按WIN+R打开运行窗口)，然后回车进入命令行，输入 route add 10.253.251.0 mask 255.255.255.0 -p 192.254.1.1。其中10.253.251.0是源地址，255.255.255.0是源地址掩码，192.254.1.1是目标地址。">
+  <meta name="description" content="使用cmd设置添加电脑上静态路由：  在“运行”窗口输入cmd(按WIN+R打开运行窗口)，然后回车进入命令行，输入（如下命令），其中10.253.251.0是源地址，255.255.255.0是源地址掩码，192.254.1.1是目标地址。1route add 10.253.251.0 mask 255.255.255.0 -p 192.254.1.1">
 <meta name="keywords" content="route,windows">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Win10下CMD添加静态路由">
 <meta property="og:url" content="http://zhuoyousheng.cn/win-add-route/index.html">
 <meta property="og:site_name" content="Yausing Blog">
-<meta property="og:description" content="使用cmd设置添加电脑上静态路由：1：在“运行”窗口输入cmd(按WIN+R打开运行窗口)，然后回车进入命令行，输入 route add 10.253.251.0 mask 255.255.255.0 -p 192.254.1.1。其中10.253.251.0是源地址，255.255.255.0是源地址掩码，192.254.1.1是目标地址。">
-<meta property="og:updated_time" content="2017-04-20T03:15:33.640Z">
+<meta property="og:description" content="使用cmd设置添加电脑上静态路由：  在“运行”窗口输入cmd(按WIN+R打开运行窗口)，然后回车进入命令行，输入（如下命令），其中10.253.251.0是源地址，255.255.255.0是源地址掩码，192.254.1.1是目标地址。1route add 10.253.251.0 mask 255.255.255.0 -p 192.254.1.1">
+<meta property="og:updated_time" content="2017-04-20T07:11:14.980Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Win10下CMD添加静态路由">
-<meta name="twitter:description" content="使用cmd设置添加电脑上静态路由：1：在“运行”窗口输入cmd(按WIN+R打开运行窗口)，然后回车进入命令行，输入 route add 10.253.251.0 mask 255.255.255.0 -p 192.254.1.1。其中10.253.251.0是源地址，255.255.255.0是源地址掩码，192.254.1.1是目标地址。">
+<meta name="twitter:description" content="使用cmd设置添加电脑上静态路由：  在“运行”窗口输入cmd(按WIN+R打开运行窗口)，然后回车进入命令行，输入（如下命令），其中10.253.251.0是源地址，255.255.255.0是源地址掩码，192.254.1.1是目标地址。1route add 10.253.251.0 mask 255.255.255.0 -p 192.254.1.1">
   
     <link rel="alternative" href="/atom.xml" title="Yausing Blog" type="application/atom+xml">
   
@@ -207,9 +207,19 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>使用cmd设置添加电脑上静态路由：<br>1：在“运行”窗口输入cmd(按WIN+R打开运行窗口)，然后回车进入命令行，输入 route add 10.253.251.0 mask 255.255.255.0 -p 192.254.1.1。其中10.253.251.0是源地址，255.255.255.0是源地址掩码，192.254.1.1是目标地址。<br><a id="more"></a></p>
-<p>2：如何查看已添加的路由?输入 route print，然后回车出现图中话红线的内容就是我们刚才添加的路由。</p>
-<p>3：那么我们如何删除已添加的路由把这条命令 route add 10.253.251.0 mask 255.255.255.0 -p 192.254.1.1 中的add 改成 delete ，然后回车就可以啦</p>
+        <p>使用cmd设置添加电脑上静态路由：</p>
+<ol>
+<li>在“运行”窗口输入cmd(按WIN+R打开运行窗口)，然后回车进入命令行，输入（如下命令），其中10.253.251.0是源地址，255.255.255.0是源地址掩码，192.254.1.1是目标地址。<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">route add 10.253.251.0 mask 255.255.255.0 -p 192.254.1.1</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<a id="more"></a>
+<ol>
+<li><p>如何查看已添加的路由?输入 route print，然后回车出现图中话红线的内容就是我们刚才添加的路由。</p>
+</li>
+<li><p>那么我们如何删除已添加的路由把这条命令（如下命令）中的add 改成 delete ，然后回车就可以啦</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">route add 10.253.251.0 mask 255.255.255.0 -p 192.254.1.1</div></pre></td></tr></table></figure>
+</li>
+</ol>
 
       
       
@@ -267,7 +277,7 @@
         <p><span>本文标题:</span><a href="/win-add-route/">Win10下CMD添加静态路由</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Yausing 的个人博客">Yausing</a></p>
         <p><span>发布时间:</span>2016年09月09日 - 17时11分</p>
-        <p><span>最后更新:</span>2017年04月20日 - 11时15分</p>
+        <p><span>最后更新:</span>2017年04月20日 - 15时11分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/win-add-route/" title="Win10下CMD添加静态路由">http://zhuoyousheng.cn/win-add-route/</a>
             <span class="copy-path" data-clipboard-text="原文: http://zhuoyousheng.cn/win-add-route/　　作者: Yausing" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -355,7 +365,7 @@
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/angular-plugin-pdf/">Angular插件：PDF在线浏览</a></li><li class="post-list-item"><a class="post-list-link" href="/angular-filter-content/">Angular中自定义filter输出富文本内容</a></li><li class="post-list-item"><a class="post-list-link" href="/angular-http-json/">用Angular的HTTP服务以JSON方式获取数据</a></li><li class="post-list-item"><a class="post-list-link" href="/ps-cut/">前端工程师必备的PS切图技能</a></li><li class="post-list-item"><a class="post-list-link" href="/typescript-1/">TypeScript入门</a></li><li class="post-list-item"><a class="post-list-link" href="/sass-2/">Sass进阶学习篇</a></li><li class="post-list-item"><a class="post-list-link" href="/sass-1/">Sass入门学习篇</a></li><li class="post-list-item"><a class="post-list-link" href="/angularjs-a-confirm/">AngularJs中使用 a 标签弹出确认框</a></li><li class="post-list-item"><a class="post-list-link" href="/duan-she-li/">《断舍离》笔记：通向自由的26个丢弃</a></li><li class="post-list-item"><a class="post-list-link" href="/angular-localresizeimg/">Angular移动端上传压缩图片</a></li><li class="post-list-item"><a class="post-list-link" href="/ng-repeat-private-scope/">ng-repeat的私有作用域scope</a></li><li class="post-list-item"><a class="post-list-link" href="/less-css-introdution/">LESS的简单语法介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/win-add-route/">Win10下CMD添加静态路由</a></li><li class="post-list-item"><a class="post-list-link" href="/wordpress-mail-smtp/">WordPress的邮箱设置 (插件 WP-Mail-SMTP)</a></li><li class="post-list-item"><a class="post-list-link" href="/wordpress-nav-role-menu/">Wordpress中根据用户角色显示菜单</a></li><li class="post-list-item"><a class="post-list-link" href="/wordpress-iplocal-language/">WordPress通过IP归属自动切换选择语言</a></li><li class="post-list-item"><a class="post-list-link" href="/custom-wordpress-fackbook/">自定义分享WordPress到Facebook的内容(Open Graph Protocol)</a></li><li class="post-list-item"><a class="post-list-link" href="/html5-editor/">推荐10个易上手好用的H5网页编辑工具</a></li><li class="post-list-item"><a class="post-list-link" href="/wordpress-redirect-to/">WordPress登录后跳转到指定页面</a></li><li class="post-list-item"><a class="post-list-link" href="/css-white-space/">CSS取消文本换行white-space</a></li><li class="post-list-item"><a class="post-list-link" href="/linux-remind/">在linux中查看磁盘使用空间</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/angular-plugin-pdf/">Angular插件：PDF在线浏览</a></li><li class="post-list-item"><a class="post-list-link" href="/angular-filter-content/">Angular中自定义filter输出富文本内容</a></li><li class="post-list-item"><a class="post-list-link" href="/angular-http-json/">用Angular的HTTP服务以JSON方式获取数据</a></li><li class="post-list-item"><a class="post-list-link" href="/ps-cut/">前端工程师必备的PS切图技能</a></li><li class="post-list-item"><a class="post-list-link" href="/typescript-1/">TypeScript入门</a></li><li class="post-list-item"><a class="post-list-link" href="/sass-2/">Sass进阶学习篇</a></li><li class="post-list-item"><a class="post-list-link" href="/sass-1/">Sass入门学习篇</a></li><li class="post-list-item"><a class="post-list-link" href="/angularjs-a-confirm/">AngularJs中使用 a 标签弹出确认框</a></li><li class="post-list-item"><a class="post-list-link" href="/duan-she-li/">《断舍离》笔记：通向自由的26个丢弃</a></li><li class="post-list-item"><a class="post-list-link" href="/angular-localresizeimg/">Angular移动端上传压缩图片</a></li><li class="post-list-item"><a class="post-list-link" href="/ng-repeat-private-scope/">ng-repeat的私有作用域scope</a></li><li class="post-list-item"><a class="post-list-link" href="/less-css-introdution/">LESS的简单语法介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/win-add-route/">Win10下CMD添加静态路由</a></li><li class="post-list-item"><a class="post-list-link" href="/wordpress-mail-smtp/">WordPress的邮箱设置 (插件 WP-Mail-SMTP)</a></li><li class="post-list-item"><a class="post-list-link" href="/wordpress-nav-role-menu/">Wordpress中根据用户角色显示菜单</a></li><li class="post-list-item"><a class="post-list-link" href="/wordpress-iplocal-language/">WordPress通过IP归属自动切换选择语言</a></li><li class="post-list-item"><a class="post-list-link" href="/custom-wordpress-fackbook/">自定义分享WordPress到Facebook的内容(Open Graph Protocol)</a></li><li class="post-list-item"><a class="post-list-link" href="/html5-editor/">推荐10个易上手好用的H5网页编辑工具</a></li><li class="post-list-item"><a class="post-list-link" href="/wordpress-redirect-to/">WordPress登录后跳转到指定页面</a></li><li class="post-list-item"><a class="post-list-link" href="/css-white-space/">CSS取消文本换行white-space</a></li><li class="post-list-item"><a class="post-list-link" href="/linux-remind/">在linux中查看磁盘使用空间</a></li></ul>
     <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");

@@ -5,17 +5,17 @@
   
   <title>Sass入门学习篇 | Yausing Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="学习Sass的起因是Ionic2框架中使用到了这个css技术，之前有学过LESS，学Sass还是比较容易的。  用’$’符号代表变量。 red;```122. 变量可以用在css属性上面。``` $side: left; .div&amp;#123; margin-#&amp;#123;$side&amp;#125;:0px; &amp;#125;  sass文件在CLI下编译，加上–watch的话会监视文件的变化。 --wat">
+  <meta name="description" content="学习Sass的起因是Ionic2框架中使用到了这个css技术，之前有学过LESS，学Sass还是比较容易的。  用’$’符号代表变量。 1$color: red;  变量可以用在css属性上面。 1$side: left; .div&amp;#123; margin-#&amp;#123;$side&amp;#125;:0px; &amp;#125;  sass文件在CLI下编译，加上–watch的话会监视文件的变化。 1sas">
 <meta name="keywords" content="css">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Sass入门学习篇">
 <meta property="og:url" content="http://zhuoyousheng.cn/sass-1/index.html">
 <meta property="og:site_name" content="Yausing Blog">
-<meta property="og:description" content="学习Sass的起因是Ionic2框架中使用到了这个css技术，之前有学过LESS，学Sass还是比较容易的。  用’$’符号代表变量。 red;```122. 变量可以用在css属性上面。``` $side: left; .div&amp;#123; margin-#&amp;#123;$side&amp;#125;:0px; &amp;#125;  sass文件在CLI下编译，加上–watch的话会监视文件的变化。 --wat">
-<meta property="og:updated_time" content="2017-04-20T03:14:52.733Z">
+<meta property="og:description" content="学习Sass的起因是Ionic2框架中使用到了这个css技术，之前有学过LESS，学Sass还是比较容易的。  用’$’符号代表变量。 1$color: red;  变量可以用在css属性上面。 1$side: left; .div&amp;#123; margin-#&amp;#123;$side&amp;#125;:0px; &amp;#125;  sass文件在CLI下编译，加上–watch的话会监视文件的变化。 1sas">
+<meta property="og:updated_time" content="2017-04-20T06:58:03.946Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Sass入门学习篇">
-<meta name="twitter:description" content="学习Sass的起因是Ionic2框架中使用到了这个css技术，之前有学过LESS，学Sass还是比较容易的。  用’$’符号代表变量。 red;```122. 变量可以用在css属性上面。``` $side: left; .div&amp;#123; margin-#&amp;#123;$side&amp;#125;:0px; &amp;#125;  sass文件在CLI下编译，加上–watch的话会监视文件的变化。 --wat">
+<meta name="twitter:description" content="学习Sass的起因是Ionic2框架中使用到了这个css技术，之前有学过LESS，学Sass还是比较容易的。  用’$’符号代表变量。 1$color: red;  变量可以用在css属性上面。 1$side: left; .div&amp;#123; margin-#&amp;#123;$side&amp;#125;:0px; &amp;#125;  sass文件在CLI下编译，加上–watch的话会监视文件的变化。 1sas">
   
     <link rel="alternative" href="/atom.xml" title="Yausing Blog" type="application/atom+xml">
   
@@ -210,30 +210,67 @@
         <p>学习Sass的起因是Ionic2框架中使用到了这个css技术，之前有学过LESS，学Sass还是比较容易的。</p>
 <ol>
 <li><p>用’$’符号代表变量。</p>
-<figure class="highlight plain"><figcaption><span>red;```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">2. 变量可以用在css属性上面。</div><div class="line">``` $side: left; .div&#123; margin-#&#123;$side&#125;:0px; &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$color</span>: red;</div></pre></td></tr></table></figure>
+</li>
+<li><p>变量可以用在css属性上面。</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$side</span>: left; <span class="selector-class">.div</span>&#123; <span class="attribute">margin</span>-#&#123;<span class="variable">$side</span>&#125;:<span class="number">0px</span>; &#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>sass文件在CLI下编译，加上–watch的话会监视文件的变化。</p>
-<figure class="highlight plain"><figcaption><span>--watch &lt;源文件文件路径&gt;/style.scss:&lt;输出路径&gt;/style.css```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;!-- more --&gt;</div><div class="line">4. 如果使用嵌套的样式的话，编译的时候需要在末尾加上参数可以输出不同格式。</div><div class="line">嵌套输出方式[ --style nested ]</div><div class="line">展开输出方式[ --style expanded ]</div><div class="line">紧凑输出方式[ --style compact ]</div><div class="line">压缩输出方式[ --style compressed ]</div><div class="line"></div><div class="line">5. 变量后面加上[ !default ]的话，优先级低于不加这个参数的。</div><div class="line"></div><div class="line">6. 嵌套写法中，使用[ &amp;amp; ]代替父选择器。</div><div class="line">``` nav&#123; a&#123; header &amp;amp; &#123;color:green;&#125; &#125; &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sass --watch &lt;源文件文件路径&gt;/style.scss:&lt;输出路径&gt;/style.css</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<a id="more"></a>
+<ol>
+<li>如果使用嵌套的样式的话，编译的时候需要在末尾加上参数可以输出不同格式。</li>
+</ol>
+<ul>
+<li>嵌套输出方式[ –style nested ]</li>
+<li>展开输出方式[ –style expanded ]</li>
+<li>紧凑输出方式[ –style compact ]</li>
+<li>压缩输出方式[ –style compressed ]</li>
+</ul>
+<ol>
+<li><p>变量后面加上[ !default ]的话，优先级低于不加这个参数的。</p>
+</li>
+<li><p>嵌套写法中，使用[ &amp; ]代替父选择器。</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">nav</span>&#123; <span class="selector-tag">a</span>&#123; <span class="selector-tag">header</span> &amp; &#123;<span class="attribute">color</span>:green;&#125; &#125; &#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>属性可以嵌套书写。</p>
-<figure class="highlight plain"><figcaption><span>font: &#123; size:12px; weight:bold; &#125; &#125;```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">8. 使用参数[ @mixin ]来声明混合宏。</div><div class="line">``` @mixin box-shadow($radius)&#123; ... &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span>&#123; <span class="attribute">font</span>: &#123; size:<span class="number">12px</span>; weight:bold; &#125; &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用参数[ @mixin ]来声明混合宏。</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">mixin</span> box-shadow(<span class="variable">$radius</span>)&#123; ... &#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>调用已经定义好的混合宏。</p>
-<figure class="highlight plain"><figcaption><span>@include box-shadow(5px); &#125;```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">10. 继承父类样式需要使用[ @extend ]参数。</div><div class="line">``` @extend .btn;</div></pre></td></tr></table></figure>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">button</span>&#123; @<span class="keyword">include</span> box-shadow(<span class="number">5px</span>); &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>继承父类样式需要使用[ @extend ]参数。</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">extend</span> .btn;</div></pre></td></tr></table></figure>
 </li>
 <li><p>占位符[ % ]用于写需要被继承的类，不[ @extend ]的时候不会产生代码。</p>
-<figure class="highlight plain"><figcaption><span>margin-top:5px; &#125;```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">12. 代码块中包含变量的时候使用混合宏，但是多次调用的代码不会合并。</div><div class="line">如果不需要传递值的时候使用继承，不论是否调用都会生成对应样式代码。</div><div class="line">占位类似于继承，但不调用的时候不会产生额外代码。</div><div class="line"></div><div class="line">13. 插值[ #&#123;$var&#125; ]不能使用在mixin中，但可以使用在extend中。</div><div class="line">``` @extend %mt5-#&#123;$scale&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">%md5&#123; <span class="attribute">margin-top</span>:<span class="number">5px</span>; &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>代码块中包含变量的时候使用混合宏，但是多次调用的代码不会合并。<br>如果不需要传递值的时候使用继承，不论是否调用都会生成对应样式代码。<br>占位类似于继承，但不调用的时候不会产生额外代码。</p>
+</li>
+<li><p>插值[ #{$var} ]不能使用在mixin中，但可以使用在extend中。</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">extend</span> %mt5-#&#123;<span class="variable">$scale</span>&#125;;</div></pre></td></tr></table></figure>
 </li>
 <li><p>注释方式[ // ]不会在目标文件生成，而[ /<em> </em>/ ]会在目标文件生成。</p>
 </li>
 <li><p>使用加法或减法的时候，不用类型的单位会使编译器报错。</p>
-<figure class="highlight plain"><figcaption><span>20px + 1em;```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">16. 使用除法的时候，需要加上小括号，或者是有其他运算符，或者是变量或函数。</div><div class="line">``` width: (100px / 2); height: 100px / 2 + 10px;</div></pre></td></tr></table></figure>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">width</span>: <span class="number">20px</span> + <span class="number">1em</span>;</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用除法的时候，需要加上小括号，或者是有其他运算符，或者是变量或函数。</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">width</span>: (<span class="number">100px</span> / <span class="number">2</span>); <span class="attribute">height</span>: <span class="number">100px</span> / <span class="number">2</span> + <span class="number">10px</span>;</div></pre></td></tr></table></figure>
 </li>
 <li><p>简单的for循环，从1循环到12。</p>
-<figure class="highlight plain"><figcaption><span>$i from 1 through 12 &#123; ... &#125;```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">18. 颜色的加法，会分为RGB三部分来相加。</div><div class="line">``` $color: #010203 + #040506; // #050709</div></pre></td></tr></table></figure>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">for</span> <span class="variable">$i</span> from 1 through 12 &#123; ... &#125;</div></pre></td></tr></table></figure>
 </li>
-<li><p>字符的加法，加完后会自动判断是否显示引号。<br><code>content: &quot;Foo &quot; + Bar; /* 保留引号 */ font-family: sans- + &quot;serif&quot;; /* 不留引号 */</code></p>
+<li><p>颜色的加法，会分为RGB三部分来相加。</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$color</span>: <span class="number">#010203</span> + <span class="number">#040506</span>; <span class="comment">// #050709</span></div></pre></td></tr></table></figure>
 </li>
+<li><p>字符的加法，加完后会自动判断是否显示引号。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">content: &quot;Foo &quot; + Bar; /* 保留引号 */ font-family: sans- + &quot;serif&quot;; /* 不留引号 */</div></pre></td></tr></table></figure></li>
 </ol>
 
       
@@ -292,7 +329,7 @@
         <p><span>本文标题:</span><a href="/sass-1/">Sass入门学习篇</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Yausing 的个人博客">Yausing</a></p>
         <p><span>发布时间:</span>2017年02月08日 - 12时04分</p>
-        <p><span>最后更新:</span>2017年04月20日 - 11时14分</p>
+        <p><span>最后更新:</span>2017年04月20日 - 14时58分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/sass-1/" title="Sass入门学习篇">http://zhuoyousheng.cn/sass-1/</a>
             <span class="copy-path" data-clipboard-text="原文: http://zhuoyousheng.cn/sass-1/　　作者: Yausing" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -380,7 +417,7 @@
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/angular-plugin-pdf/">Angular插件：PDF在线浏览</a></li><li class="post-list-item"><a class="post-list-link" href="/angular-filter-content/">Angular中自定义filter输出富文本内容</a></li><li class="post-list-item"><a class="post-list-link" href="/angular-http-json/">用Angular的HTTP服务以JSON方式获取数据</a></li><li class="post-list-item"><a class="post-list-link" href="/ps-cut/">前端工程师必备的PS切图技能</a></li><li class="post-list-item"><a class="post-list-link" href="/typescript-1/">TypeScript入门</a></li><li class="post-list-item"><a class="post-list-link" href="/sass-2/">Sass进阶学习篇</a></li><li class="post-list-item"><a class="post-list-link" href="/sass-1/">Sass入门学习篇</a></li><li class="post-list-item"><a class="post-list-link" href="/angularjs-a-confirm/">AngularJs中使用 a 标签弹出确认框</a></li><li class="post-list-item"><a class="post-list-link" href="/duan-she-li/">《断舍离》笔记：通向自由的26个丢弃</a></li><li class="post-list-item"><a class="post-list-link" href="/angular-localresizeimg/">Angular移动端上传压缩图片</a></li><li class="post-list-item"><a class="post-list-link" href="/ng-repeat-private-scope/">ng-repeat的私有作用域scope</a></li><li class="post-list-item"><a class="post-list-link" href="/less-css-introdution/">LESS的简单语法介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/win-add-route/">Win10下CMD添加静态路由</a></li><li class="post-list-item"><a class="post-list-link" href="/wordpress-mail-smtp/">WordPress的邮箱设置 (插件 WP-Mail-SMTP)</a></li><li class="post-list-item"><a class="post-list-link" href="/wordpress-nav-role-menu/">Wordpress中根据用户角色显示菜单</a></li><li class="post-list-item"><a class="post-list-link" href="/wordpress-iplocal-language/">WordPress通过IP归属自动切换选择语言</a></li><li class="post-list-item"><a class="post-list-link" href="/custom-wordpress-fackbook/">自定义分享WordPress到Facebook的内容(Open Graph Protocol)</a></li><li class="post-list-item"><a class="post-list-link" href="/html5-editor/">推荐10个易上手好用的H5网页编辑工具</a></li><li class="post-list-item"><a class="post-list-link" href="/wordpress-redirect-to/">WordPress登录后跳转到指定页面</a></li><li class="post-list-item"><a class="post-list-link" href="/css-white-space/">CSS取消文本换行white-space</a></li><li class="post-list-item"><a class="post-list-link" href="/linux-remind/">在linux中查看磁盘使用空间</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/angular-plugin-pdf/">Angular插件：PDF在线浏览</a></li><li class="post-list-item"><a class="post-list-link" href="/angular-filter-content/">Angular中自定义filter输出富文本内容</a></li><li class="post-list-item"><a class="post-list-link" href="/angular-http-json/">用Angular的HTTP服务以JSON方式获取数据</a></li><li class="post-list-item"><a class="post-list-link" href="/ps-cut/">前端工程师必备的PS切图技能</a></li><li class="post-list-item"><a class="post-list-link" href="/typescript-1/">TypeScript入门</a></li><li class="post-list-item"><a class="post-list-link" href="/sass-2/">Sass进阶学习篇</a></li><li class="post-list-item"><a class="post-list-link" href="/sass-1/">Sass入门学习篇</a></li><li class="post-list-item"><a class="post-list-link" href="/angularjs-a-confirm/">AngularJs中使用 a 标签弹出确认框</a></li><li class="post-list-item"><a class="post-list-link" href="/duan-she-li/">《断舍离》笔记：通向自由的26个丢弃</a></li><li class="post-list-item"><a class="post-list-link" href="/angular-localresizeimg/">Angular移动端上传压缩图片</a></li><li class="post-list-item"><a class="post-list-link" href="/ng-repeat-private-scope/">ng-repeat的私有作用域scope</a></li><li class="post-list-item"><a class="post-list-link" href="/less-css-introdution/">LESS的简单语法介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/win-add-route/">Win10下CMD添加静态路由</a></li><li class="post-list-item"><a class="post-list-link" href="/wordpress-mail-smtp/">WordPress的邮箱设置 (插件 WP-Mail-SMTP)</a></li><li class="post-list-item"><a class="post-list-link" href="/wordpress-nav-role-menu/">Wordpress中根据用户角色显示菜单</a></li><li class="post-list-item"><a class="post-list-link" href="/wordpress-iplocal-language/">WordPress通过IP归属自动切换选择语言</a></li><li class="post-list-item"><a class="post-list-link" href="/custom-wordpress-fackbook/">自定义分享WordPress到Facebook的内容(Open Graph Protocol)</a></li><li class="post-list-item"><a class="post-list-link" href="/html5-editor/">推荐10个易上手好用的H5网页编辑工具</a></li><li class="post-list-item"><a class="post-list-link" href="/wordpress-redirect-to/">WordPress登录后跳转到指定页面</a></li><li class="post-list-item"><a class="post-list-link" href="/css-white-space/">CSS取消文本换行white-space</a></li><li class="post-list-item"><a class="post-list-link" href="/linux-remind/">在linux中查看磁盘使用空间</a></li></ul>
     <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");

@@ -5,19 +5,17 @@
   
   <title>ng-repeat的私有作用域scope | Yausing Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="起因：前几天用angular碰到个scope的问题，死活不能解决。 例子:  原因：ng-repeat在遍历创建列表的时候，ng-repeat里面输出的元素会有自己新的scope，也就是说这里的 cis 的作用域已经发生了变化，ng-init 中声明的 cis 和 ng-class 中的 cis 已经变成了不同的变量了。这样写相当于 cis[0] = citem.city_id, cis[1] =">
+  <meta name="description" content="起因：前几天用angular碰到个scope的问题，成功触发了div的ng-click事件，但是全局变量的值不改变。 例子:1234567&amp;lt;ion-scroll class=&quot;filter&quot; ng-init=&quot;cis=0&quot;&amp;gt;  &amp;lt;div ng-repeat=&quot;item in pos&quot;    ng-class=&quot;&amp;#123;&apos;active&apos;: cis== item.id &amp;#125">
 <meta name="keywords" content="angular,angularjs,ionic,scope">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ng-repeat的私有作用域scope">
 <meta property="og:url" content="http://zhuoyousheng.cn/ng-repeat-private-scope/index.html">
 <meta property="og:site_name" content="Yausing Blog">
-<meta property="og:description" content="起因：前几天用angular碰到个scope的问题，死活不能解决。 例子:  原因：ng-repeat在遍历创建列表的时候，ng-repeat里面输出的元素会有自己新的scope，也就是说这里的 cis 的作用域已经发生了变化，ng-init 中声明的 cis 和 ng-class 中的 cis 已经变成了不同的变量了。这样写相当于 cis[0] = citem.city_id, cis[1] =">
-<meta property="og:image" content="http://www.zhuoyousheng.cn/wp-content/uploads/2016/12/cd211c014ec27d79ed1c30aee378618e.png">
-<meta property="og:updated_time" content="2017-04-20T03:14:06.646Z">
+<meta property="og:description" content="起因：前几天用angular碰到个scope的问题，成功触发了div的ng-click事件，但是全局变量的值不改变。 例子:1234567&amp;lt;ion-scroll class=&quot;filter&quot; ng-init=&quot;cis=0&quot;&amp;gt;  &amp;lt;div ng-repeat=&quot;item in pos&quot;    ng-class=&quot;&amp;#123;&apos;active&apos;: cis== item.id &amp;#125">
+<meta property="og:updated_time" content="2017-04-20T06:54:03.389Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ng-repeat的私有作用域scope">
-<meta name="twitter:description" content="起因：前几天用angular碰到个scope的问题，死活不能解决。 例子:  原因：ng-repeat在遍历创建列表的时候，ng-repeat里面输出的元素会有自己新的scope，也就是说这里的 cis 的作用域已经发生了变化，ng-init 中声明的 cis 和 ng-class 中的 cis 已经变成了不同的变量了。这样写相当于 cis[0] = citem.city_id, cis[1] =">
-<meta name="twitter:image" content="http://www.zhuoyousheng.cn/wp-content/uploads/2016/12/cd211c014ec27d79ed1c30aee378618e.png">
+<meta name="twitter:description" content="起因：前几天用angular碰到个scope的问题，成功触发了div的ng-click事件，但是全局变量的值不改变。 例子:1234567&amp;lt;ion-scroll class=&quot;filter&quot; ng-init=&quot;cis=0&quot;&amp;gt;  &amp;lt;div ng-repeat=&quot;item in pos&quot;    ng-class=&quot;&amp;#123;&apos;active&apos;: cis== item.id &amp;#125">
   
     <link rel="alternative" href="/atom.xml" title="Yausing Blog" type="application/atom+xml">
   
@@ -209,11 +207,10 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>起因：前几天用angular碰到个scope的问题，死活不能解决。</p>
-<p>例子:</p>
-<p><img src="http://www.zhuoyousheng.cn/wp-content/uploads/2016/12/cd211c014ec27d79ed1c30aee378618e.png" alt=""></p>
-<p>原因：ng-repeat在遍历创建列表的时候，ng-repeat里面输出的元素会有自己新的scope，也就是说这里的 cis 的作用域已经发生了变化，ng-init 中声明的 cis 和 ng-class 中的 cis 已经变成了不同的变量了。这样写相当于 cis[0] = citem.city_id, cis[1] = citem.city_id, cis[2] = citem.city_id。<br><a id="more"></a></p>
-<p>解决方法，使用ng-model双向绑定的时候，建议绑定的对象属性比如ng-model=”L.cis”，而不是ng-model=”cis”，否则你会出现各种问题。</p>
+        <h3 id="起因："><a href="#起因：" class="headerlink" title="起因："></a>起因：</h3><p>前几天用angular碰到个scope的问题，成功触发了div的ng-click事件，但是全局变量的值不改变。</p>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子:"></a>例子:</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ion-scroll</span> <span class="attr">class</span>=<span class="string">"filter"</span> <span class="attr">ng-init</span>=<span class="string">"cis=0"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-repeat</span>=<span class="string">"item in pos"</span></span></div><div class="line">    <span class="attr">ng-class</span>=<span class="string">"&#123;'active': cis== item.id &#125;"</span></div><div class="line">    <span class="attr">ng-click</span>=<span class="string">"cis=item.id;"</span>&gt;</div><div class="line">    &#123;&#123;item.name&#125;&#125;</div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ion-scroll</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="原因："><a href="#原因：" class="headerlink" title="原因："></a>原因：</h3><p>ng-repeat在遍历创建列表的时候，ng-repeat里面输出的元素会有自己新的scope，也就是说这里的 cis 的作用域已经发生了变化，ng-init 中声明的 cis 和 ng-class 中的 cis 已经变成了不同的变量了。这样写相当于 cis[0] = item.id, cis[1] = item.id, cis[2] = item.id。<br><a id="more"></a></p>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法:"></a>解决方法:</h3><p>使用ng-model双向绑定的时候，建议绑定的对象属性比如ng-model=”L.cis”，而不是ng-model=”cis”，否则你会出现各种问题。</p>
 
       
       
@@ -271,7 +268,7 @@
         <p><span>本文标题:</span><a href="/ng-repeat-private-scope/">ng-repeat的私有作用域scope</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Yausing 的个人博客">Yausing</a></p>
         <p><span>发布时间:</span>2016年12月08日 - 16时02分</p>
-        <p><span>最后更新:</span>2017年04月20日 - 11时14分</p>
+        <p><span>最后更新:</span>2017年04月20日 - 14时54分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/ng-repeat-private-scope/" title="ng-repeat的私有作用域scope">http://zhuoyousheng.cn/ng-repeat-private-scope/</a>
             <span class="copy-path" data-clipboard-text="原文: http://zhuoyousheng.cn/ng-repeat-private-scope/　　作者: Yausing" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -309,7 +306,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#起因："><span class="toc-number">1.</span> <span class="toc-text">起因：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例子"><span class="toc-number">2.</span> <span class="toc-text">例子:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#原因："><span class="toc-number">3.</span> <span class="toc-text">原因：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决方法"><span class="toc-number">4.</span> <span class="toc-text">解决方法:</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -359,7 +356,7 @@
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/angular-plugin-pdf/">Angular插件：PDF在线浏览</a></li><li class="post-list-item"><a class="post-list-link" href="/angular-filter-content/">Angular中自定义filter输出富文本内容</a></li><li class="post-list-item"><a class="post-list-link" href="/angular-http-json/">用Angular的HTTP服务以JSON方式获取数据</a></li><li class="post-list-item"><a class="post-list-link" href="/ps-cut/">前端工程师必备的PS切图技能</a></li><li class="post-list-item"><a class="post-list-link" href="/typescript-1/">TypeScript入门</a></li><li class="post-list-item"><a class="post-list-link" href="/sass-2/">Sass进阶学习篇</a></li><li class="post-list-item"><a class="post-list-link" href="/sass-1/">Sass入门学习篇</a></li><li class="post-list-item"><a class="post-list-link" href="/angularjs-a-confirm/">AngularJs中使用 a 标签弹出确认框</a></li><li class="post-list-item"><a class="post-list-link" href="/duan-she-li/">《断舍离》笔记：通向自由的26个丢弃</a></li><li class="post-list-item"><a class="post-list-link" href="/angular-localresizeimg/">Angular移动端上传压缩图片</a></li><li class="post-list-item"><a class="post-list-link" href="/ng-repeat-private-scope/">ng-repeat的私有作用域scope</a></li><li class="post-list-item"><a class="post-list-link" href="/less-css-introdution/">LESS的简单语法介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/win-add-route/">Win10下CMD添加静态路由</a></li><li class="post-list-item"><a class="post-list-link" href="/wordpress-mail-smtp/">WordPress的邮箱设置 (插件 WP-Mail-SMTP)</a></li><li class="post-list-item"><a class="post-list-link" href="/wordpress-nav-role-menu/">Wordpress中根据用户角色显示菜单</a></li><li class="post-list-item"><a class="post-list-link" href="/wordpress-iplocal-language/">WordPress通过IP归属自动切换选择语言</a></li><li class="post-list-item"><a class="post-list-link" href="/custom-wordpress-fackbook/">自定义分享WordPress到Facebook的内容(Open Graph Protocol)</a></li><li class="post-list-item"><a class="post-list-link" href="/html5-editor/">推荐10个易上手好用的H5网页编辑工具</a></li><li class="post-list-item"><a class="post-list-link" href="/wordpress-redirect-to/">WordPress登录后跳转到指定页面</a></li><li class="post-list-item"><a class="post-list-link" href="/css-white-space/">CSS取消文本换行white-space</a></li><li class="post-list-item"><a class="post-list-link" href="/linux-remind/">在linux中查看磁盘使用空间</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/angular-plugin-pdf/">Angular插件：PDF在线浏览</a></li><li class="post-list-item"><a class="post-list-link" href="/angular-filter-content/">Angular中自定义filter输出富文本内容</a></li><li class="post-list-item"><a class="post-list-link" href="/angular-http-json/">用Angular的HTTP服务以JSON方式获取数据</a></li><li class="post-list-item"><a class="post-list-link" href="/ps-cut/">前端工程师必备的PS切图技能</a></li><li class="post-list-item"><a class="post-list-link" href="/typescript-1/">TypeScript入门</a></li><li class="post-list-item"><a class="post-list-link" href="/sass-2/">Sass进阶学习篇</a></li><li class="post-list-item"><a class="post-list-link" href="/sass-1/">Sass入门学习篇</a></li><li class="post-list-item"><a class="post-list-link" href="/angularjs-a-confirm/">AngularJs中使用 a 标签弹出确认框</a></li><li class="post-list-item"><a class="post-list-link" href="/duan-she-li/">《断舍离》笔记：通向自由的26个丢弃</a></li><li class="post-list-item"><a class="post-list-link" href="/angular-localresizeimg/">Angular移动端上传压缩图片</a></li><li class="post-list-item"><a class="post-list-link" href="/ng-repeat-private-scope/">ng-repeat的私有作用域scope</a></li><li class="post-list-item"><a class="post-list-link" href="/less-css-introdution/">LESS的简单语法介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/win-add-route/">Win10下CMD添加静态路由</a></li><li class="post-list-item"><a class="post-list-link" href="/wordpress-mail-smtp/">WordPress的邮箱设置 (插件 WP-Mail-SMTP)</a></li><li class="post-list-item"><a class="post-list-link" href="/wordpress-nav-role-menu/">Wordpress中根据用户角色显示菜单</a></li><li class="post-list-item"><a class="post-list-link" href="/wordpress-iplocal-language/">WordPress通过IP归属自动切换选择语言</a></li><li class="post-list-item"><a class="post-list-link" href="/custom-wordpress-fackbook/">自定义分享WordPress到Facebook的内容(Open Graph Protocol)</a></li><li class="post-list-item"><a class="post-list-link" href="/html5-editor/">推荐10个易上手好用的H5网页编辑工具</a></li><li class="post-list-item"><a class="post-list-link" href="/wordpress-redirect-to/">WordPress登录后跳转到指定页面</a></li><li class="post-list-item"><a class="post-list-link" href="/css-white-space/">CSS取消文本换行white-space</a></li><li class="post-list-item"><a class="post-list-link" href="/linux-remind/">在linux中查看磁盘使用空间</a></li></ul>
     <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");

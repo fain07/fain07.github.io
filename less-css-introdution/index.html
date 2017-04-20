@@ -5,17 +5,17 @@
   
   <title>LESS的简单语法介绍 | Yausing Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Less 笔记 1、多出来一种注释方式【双斜杠//】，这个不会被编译到CSS文件。【/**/】会被编译到CSS文件。2、变量定义，用@符号定义，用冒号赋值，【@变量名:值】。3、声明css样式的时候可以写个括号，并引用参数，【.css-name(@param)】，此时必须传值。4、声明带参数的css样式的时候，可以带上默认值，【.css-name(@param:value)】。">
+  <meta name="description" content="Less 笔记  多出来一种注释方式【双斜杠//】，这个不会被编译到CSS文件。【/**/】会被编译到CSS文件。  变量定义，用@符号定义，用冒号赋值，【@变量名:值】。  声明css样式的时候可以写个括号，并引用参数，【.css-name(@param)】，此时必须传值。  声明带参数的css样式的时候，可以带上默认值，【.css-name(@param:value)】。">
 <meta name="keywords" content="css,less">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LESS的简单语法介绍">
 <meta property="og:url" content="http://zhuoyousheng.cn/less-css-introdution/index.html">
 <meta property="og:site_name" content="Yausing Blog">
-<meta property="og:description" content="Less 笔记 1、多出来一种注释方式【双斜杠//】，这个不会被编译到CSS文件。【/**/】会被编译到CSS文件。2、变量定义，用@符号定义，用冒号赋值，【@变量名:值】。3、声明css样式的时候可以写个括号，并引用参数，【.css-name(@param)】，此时必须传值。4、声明带参数的css样式的时候，可以带上默认值，【.css-name(@param:value)】。">
-<meta property="og:updated_time" content="2017-04-20T03:13:41.250Z">
+<meta property="og:description" content="Less 笔记  多出来一种注释方式【双斜杠//】，这个不会被编译到CSS文件。【/**/】会被编译到CSS文件。  变量定义，用@符号定义，用冒号赋值，【@变量名:值】。  声明css样式的时候可以写个括号，并引用参数，【.css-name(@param)】，此时必须传值。  声明带参数的css样式的时候，可以带上默认值，【.css-name(@param:value)】。">
+<meta property="og:updated_time" content="2017-04-20T06:46:12.821Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LESS的简单语法介绍">
-<meta name="twitter:description" content="Less 笔记 1、多出来一种注释方式【双斜杠//】，这个不会被编译到CSS文件。【/**/】会被编译到CSS文件。2、变量定义，用@符号定义，用冒号赋值，【@变量名:值】。3、声明css样式的时候可以写个括号，并引用参数，【.css-name(@param)】，此时必须传值。4、声明带参数的css样式的时候，可以带上默认值，【.css-name(@param:value)】。">
+<meta name="twitter:description" content="Less 笔记  多出来一种注释方式【双斜杠//】，这个不会被编译到CSS文件。【/**/】会被编译到CSS文件。  变量定义，用@符号定义，用冒号赋值，【@变量名:值】。  声明css样式的时候可以写个括号，并引用参数，【.css-name(@param)】，此时必须传值。  声明带参数的css样式的时候，可以带上默认值，【.css-name(@param:value)】。">
   
     <link rel="alternative" href="/atom.xml" title="Yausing Blog" type="application/atom+xml">
   
@@ -208,7 +208,33 @@
       
           
         <p>Less 笔记</p>
-<p>1、多出来一种注释方式【双斜杠//】，这个不会被编译到CSS文件。【/**/】会被编译到CSS文件。<br>2、变量定义，用@符号定义，用冒号赋值，【@变量名:值】。<br>3、声明css样式的时候可以写个括号，并引用参数，【.css-name(@param)】，此时必须传值。<br>4、声明带参数的css样式的时候，可以带上默认值，【.css-name(@param:value)】。<br><a id="more"></a><br>5、带参数的用来写一些重复使用的代码比较有用，比如带-webkit的声明。<br>6、匹配模式相当于其他语言的IF，声明时候带固定的参数，【.triangle(bottom,@param)】。<br>7、对于颜色进行运算的时候，颜色会由16进制转化为十进制，【color:#fff-20】，相当于【color:#feb】。<br>8、有嵌套的功能，比如为list下面的多个样式进行声明的时候，不用重复些list，【.list{…}】。<br>9、例如为a标签写hover属性的时候，【&amp;:hover】中的【&amp;】代表上层选择器a。<br>10、【@arguments】会把所有的属性都带进来。<br>11、对于不需要编译的代码，用【~’’】把不需要的加到单引号中。<br>12、在函数引用后面加上【!important】，例如【.hello() !important;】，该函数下面的所有样式都会加上【!important】。</p>
+<ol>
+<li><p>多出来一种注释方式【双斜杠//】，这个不会被编译到CSS文件。【/**/】会被编译到CSS文件。</p>
+</li>
+<li><p>变量定义，用@符号定义，用冒号赋值，【@变量名:值】。</p>
+</li>
+<li><p>声明css样式的时候可以写个括号，并引用参数，【.css-name(@param)】，此时必须传值。</p>
+</li>
+<li><p>声明带参数的css样式的时候，可以带上默认值，【.css-name(@param:value)】。</p>
+<a id="more"></a>
+</li>
+<li><p>带参数的用来写一些重复使用的代码比较有用，比如带-webkit的声明。</p>
+</li>
+<li><p>匹配模式相当于其他语言的IF，声明时候带固定的参数，【.triangle(bottom,@param)】。</p>
+</li>
+<li><p>对于颜色进行运算的时候，颜色会由16进制转化为十进制，【color:#fff-20】，相当于【color:#feb】。</p>
+</li>
+<li><p>有嵌套的功能，比如为list下面的多个样式进行声明的时候，不用重复些list，【.list{…}】。</p>
+</li>
+<li><p>例如为a标签写hover属性的时候，【&amp;:hover】中的【&amp;】代表上层选择器a。</p>
+</li>
+<li><p>【@arguments】会把所有的属性都带进来。</p>
+</li>
+<li><p>对于不需要编译的代码，用【~’’】把不需要的加到单引号中。</p>
+</li>
+<li><p>在函数引用后面加上【!important】，例如【.hello() !important;】，该函数下面的所有样式都会加上【!important】。</p>
+</li>
+</ol>
 
       
       
@@ -266,7 +292,7 @@
         <p><span>本文标题:</span><a href="/less-css-introdution/">LESS的简单语法介绍</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Yausing 的个人博客">Yausing</a></p>
         <p><span>发布时间:</span>2016年10月12日 - 17时13分</p>
-        <p><span>最后更新:</span>2017年04月20日 - 11时13分</p>
+        <p><span>最后更新:</span>2017年04月20日 - 14时46分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/less-css-introdution/" title="LESS的简单语法介绍">http://zhuoyousheng.cn/less-css-introdution/</a>
             <span class="copy-path" data-clipboard-text="原文: http://zhuoyousheng.cn/less-css-introdution/　　作者: Yausing" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -354,7 +380,7 @@
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/angular-plugin-pdf/">Angular插件：PDF在线浏览</a></li><li class="post-list-item"><a class="post-list-link" href="/angular-filter-content/">Angular中自定义filter输出富文本内容</a></li><li class="post-list-item"><a class="post-list-link" href="/angular-http-json/">用Angular的HTTP服务以JSON方式获取数据</a></li><li class="post-list-item"><a class="post-list-link" href="/ps-cut/">前端工程师必备的PS切图技能</a></li><li class="post-list-item"><a class="post-list-link" href="/typescript-1/">TypeScript入门</a></li><li class="post-list-item"><a class="post-list-link" href="/sass-2/">Sass进阶学习篇</a></li><li class="post-list-item"><a class="post-list-link" href="/sass-1/">Sass入门学习篇</a></li><li class="post-list-item"><a class="post-list-link" href="/angularjs-a-confirm/">AngularJs中使用 a 标签弹出确认框</a></li><li class="post-list-item"><a class="post-list-link" href="/duan-she-li/">《断舍离》笔记：通向自由的26个丢弃</a></li><li class="post-list-item"><a class="post-list-link" href="/angular-localresizeimg/">Angular移动端上传压缩图片</a></li><li class="post-list-item"><a class="post-list-link" href="/ng-repeat-private-scope/">ng-repeat的私有作用域scope</a></li><li class="post-list-item"><a class="post-list-link" href="/less-css-introdution/">LESS的简单语法介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/win-add-route/">Win10下CMD添加静态路由</a></li><li class="post-list-item"><a class="post-list-link" href="/wordpress-mail-smtp/">WordPress的邮箱设置 (插件 WP-Mail-SMTP)</a></li><li class="post-list-item"><a class="post-list-link" href="/wordpress-nav-role-menu/">Wordpress中根据用户角色显示菜单</a></li><li class="post-list-item"><a class="post-list-link" href="/wordpress-iplocal-language/">WordPress通过IP归属自动切换选择语言</a></li><li class="post-list-item"><a class="post-list-link" href="/custom-wordpress-fackbook/">自定义分享WordPress到Facebook的内容(Open Graph Protocol)</a></li><li class="post-list-item"><a class="post-list-link" href="/html5-editor/">推荐10个易上手好用的H5网页编辑工具</a></li><li class="post-list-item"><a class="post-list-link" href="/wordpress-redirect-to/">WordPress登录后跳转到指定页面</a></li><li class="post-list-item"><a class="post-list-link" href="/css-white-space/">CSS取消文本换行white-space</a></li><li class="post-list-item"><a class="post-list-link" href="/linux-remind/">在linux中查看磁盘使用空间</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/angular-plugin-pdf/">Angular插件：PDF在线浏览</a></li><li class="post-list-item"><a class="post-list-link" href="/angular-filter-content/">Angular中自定义filter输出富文本内容</a></li><li class="post-list-item"><a class="post-list-link" href="/angular-http-json/">用Angular的HTTP服务以JSON方式获取数据</a></li><li class="post-list-item"><a class="post-list-link" href="/ps-cut/">前端工程师必备的PS切图技能</a></li><li class="post-list-item"><a class="post-list-link" href="/typescript-1/">TypeScript入门</a></li><li class="post-list-item"><a class="post-list-link" href="/sass-2/">Sass进阶学习篇</a></li><li class="post-list-item"><a class="post-list-link" href="/sass-1/">Sass入门学习篇</a></li><li class="post-list-item"><a class="post-list-link" href="/angularjs-a-confirm/">AngularJs中使用 a 标签弹出确认框</a></li><li class="post-list-item"><a class="post-list-link" href="/duan-she-li/">《断舍离》笔记：通向自由的26个丢弃</a></li><li class="post-list-item"><a class="post-list-link" href="/angular-localresizeimg/">Angular移动端上传压缩图片</a></li><li class="post-list-item"><a class="post-list-link" href="/ng-repeat-private-scope/">ng-repeat的私有作用域scope</a></li><li class="post-list-item"><a class="post-list-link" href="/less-css-introdution/">LESS的简单语法介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/win-add-route/">Win10下CMD添加静态路由</a></li><li class="post-list-item"><a class="post-list-link" href="/wordpress-mail-smtp/">WordPress的邮箱设置 (插件 WP-Mail-SMTP)</a></li><li class="post-list-item"><a class="post-list-link" href="/wordpress-nav-role-menu/">Wordpress中根据用户角色显示菜单</a></li><li class="post-list-item"><a class="post-list-link" href="/wordpress-iplocal-language/">WordPress通过IP归属自动切换选择语言</a></li><li class="post-list-item"><a class="post-list-link" href="/custom-wordpress-fackbook/">自定义分享WordPress到Facebook的内容(Open Graph Protocol)</a></li><li class="post-list-item"><a class="post-list-link" href="/html5-editor/">推荐10个易上手好用的H5网页编辑工具</a></li><li class="post-list-item"><a class="post-list-link" href="/wordpress-redirect-to/">WordPress登录后跳转到指定页面</a></li><li class="post-list-item"><a class="post-list-link" href="/css-white-space/">CSS取消文本换行white-space</a></li><li class="post-list-item"><a class="post-list-link" href="/linux-remind/">在linux中查看磁盘使用空间</a></li></ul>
     <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");

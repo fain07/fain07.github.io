@@ -5,17 +5,17 @@
   
   <title>Sass进阶学习篇 | Yausing Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Sass进阶学习篇 这篇学习笔记是Sass入门学习篇的后续学习。  判断语句[ @if ]，可以搭配[ @else if ]和[ @else ]使用，判断true或false。 $boolean &amp;#123; ... &amp;#125; @else &amp;#123; ... &amp;#125;```122. for循环，其中[ through ]可以更换为[ to ]，用[ to ]的时候不包含[ ]。``` @">
+  <meta name="description" content="Sass进阶学习篇 这篇学习笔记是Sass入门学习篇的后续学习。  判断语句[ @if ]，可以搭配[ @else if ]和[ @else ]使用，判断true或false。 1@if $boolean &amp;#123; ... &amp;#125; @else &amp;#123; ... &amp;#125;  for循环，其中[ through ]可以更换为[ to ]，用[ to ]的时候不包含[ ]。 1@for">
 <meta name="keywords" content="css">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Sass进阶学习篇">
 <meta property="og:url" content="http://zhuoyousheng.cn/sass-2/index.html">
 <meta property="og:site_name" content="Yausing Blog">
-<meta property="og:description" content="Sass进阶学习篇 这篇学习笔记是Sass入门学习篇的后续学习。  判断语句[ @if ]，可以搭配[ @else if ]和[ @else ]使用，判断true或false。 $boolean &amp;#123; ... &amp;#125; @else &amp;#123; ... &amp;#125;```122. for循环，其中[ through ]可以更换为[ to ]，用[ to ]的时候不包含[ ]。``` @">
-<meta property="og:updated_time" content="2017-04-20T03:15:14.854Z">
+<meta property="og:description" content="Sass进阶学习篇 这篇学习笔记是Sass入门学习篇的后续学习。  判断语句[ @if ]，可以搭配[ @else if ]和[ @else ]使用，判断true或false。 1@if $boolean &amp;#123; ... &amp;#125; @else &amp;#123; ... &amp;#125;  for循环，其中[ through ]可以更换为[ to ]，用[ to ]的时候不包含[ ]。 1@for">
+<meta property="og:updated_time" content="2017-04-20T06:59:15.353Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Sass进阶学习篇">
-<meta name="twitter:description" content="Sass进阶学习篇 这篇学习笔记是Sass入门学习篇的后续学习。  判断语句[ @if ]，可以搭配[ @else if ]和[ @else ]使用，判断true或false。 $boolean &amp;#123; ... &amp;#125; @else &amp;#123; ... &amp;#125;```122. for循环，其中[ through ]可以更换为[ to ]，用[ to ]的时候不包含[ ]。``` @">
+<meta name="twitter:description" content="Sass进阶学习篇 这篇学习笔记是Sass入门学习篇的后续学习。  判断语句[ @if ]，可以搭配[ @else if ]和[ @else ]使用，判断true或false。 1@if $boolean &amp;#123; ... &amp;#125; @else &amp;#123; ... &amp;#125;  for循环，其中[ through ]可以更换为[ to ]，用[ to ]的时候不包含[ ]。 1@for">
   
     <link rel="alternative" href="/atom.xml" title="Yausing Blog" type="application/atom+xml">
   
@@ -211,25 +211,75 @@
 <p>这篇学习笔记是<a href="/2017/sass-1">Sass入门学习篇</a>的后续学习。</p>
 <ol>
 <li><p>判断语句[ @if ]，可以搭配[ @else if ]和[ @else ]使用，判断true或false。</p>
-<figure class="highlight plain"><figcaption><span>$boolean &#123; ... &#125; @else &#123; ... &#125;```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">2. for循环，其中[ through ]可以更换为[ to ]，用[ to ]的时候不包含[ ]。</div><div class="line">``` @for $i from  through  &#123; ..#&#123;$i&#125;.. &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">if</span> <span class="variable">$boolean</span> &#123; ... &#125; @<span class="keyword">else</span> &#123; ... &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>for循环，其中[ through ]可以更换为[ to ]，用[ to ]的时候不包含[ ]。</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">for</span> <span class="variable">$i</span> from  through  &#123; ..#&#123;<span class="variable">$i</span>&#125;.. &#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>while循环，直到while后面的表达式的值为false的时候停止循环。</p>
-<figure class="highlight plain"><figcaption><span>$types &gt; 0 &#123; ... &#125;```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;!-- more --&gt;</div><div class="line">4. each循环，遍历一个列表，从列表中取出对应的值。</div><div class="line">``` @each $var in  &#123; ... &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">while</span> <span class="variable">$types</span> &amp;gt; 0 &#123; ... &#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<a id="more"></a>
+<ol>
+<li><p>each循环，遍历一个列表，从列表中取出对应的值。</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">each</span> <span class="variable">$var</span> in  &#123; ... &#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>unquote函数是用来删除一个字符串中的引号，quote则是用来加上引号。</p>
-<figure class="highlight plain"><figcaption><span>unquote('Hello Sass!');```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">6. 字符串大小写函数[ to-upper-case ]和[ to-lower-case ]。</div><div class="line">``` content: to-upper-case(aaaa);</div></pre></td></tr></table></figure>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">content</span>: unquote(<span class="string">'Hello Sass!'</span>);</div></pre></td></tr></table></figure>
 </li>
-<li><p>常用的数字函数。<br>percentage($value): 将一个不带单位的数转为百分比值（.2转为20%）。<br>round($value): 将数值四舍五入，转换成整数，并保留单位（px 或 % 等）。<br>ceil / floor($value): 向上/向下取整，并保留单位。<br>abs($value): 取绝对值，并保留单位。<br>max / min($numbers…): 获得最大值/最小值，只能比较同一类型的值。<br>random(): 获取一个0-1的随机数，不包含1。</p>
+<li><p>字符串大小写函数[ to-upper-case ]和[ to-lower-case ]。</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">content</span>: to-upper-case(aaaa);</div></pre></td></tr></table></figure>
 </li>
-<li><p>常用的列表函数。<br>length($list): 返回列表的长度，$list的参数用空格隔开。<br>nth($list, $n): 返回列表中指定标签值，从1开始算，颜色会自动转成数值型的。<br>join($list1, $list2, [$separator]): 合并多个列表，separator为comma的时候显示逗号。<br>append($list, $val, [$separator]): 把一个值追加到列表，separator为space的时候显示空格。<br>zip($lists…): 将几个列表组成多维列表，每个单一的列表个数值必须是相同的。<br>index($list, $value): 返回一个值在列表中的位置，从1开始，找不到则返回false。</p>
+<li><p>常用的数字函数。</p>
 </li>
-<li><p>几个Introspection函数。<br>type-of($value): 返回一个值的类型[ number string bool color ]。<br>unit($number): 返回一个值的类型，除了[ px cm mm ]外的不同单位的加减单位获取会报错。<br>unitless($number): 判断一个值是否带单位，不带单位则返回true。<br>comparable($number1, $number2): 判断两个值是够可以加减、合并，[ px cm mm ]间为true。</p>
-</li>
+</ol>
+<ul>
+<li>percentage($value): 将一个不带单位的数转为百分比值（.2转为20%）。</li>
+<li>round($value): 将数值四舍五入，转换成整数，并保留单位（px 或 % 等）。</li>
+<li>ceil / floor($value): 向上/向下取整，并保留单位。</li>
+<li>abs($value): 取绝对值，并保留单位。</li>
+<li>max / min($numbers…): 获得最大值/最小值，只能比较同一类型的值。</li>
+<li>random(): 获取一个0-1的随机数，不包含1。</li>
+</ul>
+<ol>
+<li>常用的列表函数。</li>
+</ol>
+<ul>
+<li>length($list): 返回列表的长度，$list的参数用空格隔开。</li>
+<li>nth($list, $n): 返回列表中指定标签值，从1开始算，颜色会自动转成数值型的。</li>
+<li>join($list1, $list2, [$separator]): 合并多个列表，separator为comma的时候显示逗号。</li>
+<li>append($list, $val, [$separator]): 把一个值追加到列表，separator为space的时候显示空格。</li>
+<li>zip($lists…): 将几个列表组成多维列表，每个单一的列表个数值必须是相同的。</li>
+<li>index($list, $value): 返回一个值在列表中的位置，从1开始，找不到则返回false。</li>
+</ul>
+<ol>
+<li>几个Introspection函数。</li>
+</ol>
+<ul>
+<li>type-of($value): 返回一个值的类型[ number string bool color ]。</li>
+<li>unit($number): 返回一个值的类型，除了[ px cm mm ]外的不同单位的加减单位获取会报错。</li>
+<li>unitless($number): 判断一个值是否带单位，不带单位则返回true。</li>
+<li>comparable($number1, $number2): 判断两个值是够可以加减、合并，[ px cm mm ]间为true。</li>
+</ul>
+<ol>
 <li><p>Miscellaneous函数（三元条件函数），[ if($condition, trueVal, falseVal) ]。</p>
 </li>
-<li><p>Map是包含key-value的数组，类似JSON。下面是Map的一些常用函数。<br>map-get($map, $key): 根据key值，返回map中的value。<br>map-merge($map1, $map2): 合并两个map。<br>map-remove($map, $key): 从map中删除一个key，并返回一个新map。<br>map-keys($map): 返回map中所有key。<br>map-values($map): 返回map中所有value。<br>map-has-key($map, $key): 根据key值，判断map中是否有对应value。<br>keywords($args): 返回一个函数的参数，这个参数可以动态设置key和value。</p>
+<li><p>Map是包含key-value的数组，类似JSON。下面是Map的一些常用函数。</p>
 </li>
-<li><p>RGBA函数中，颜色可以用颜色缩写或颜色值代替RGB值。<br><code>color: rgba(#f36, .5);  border-color: rgba(orange, .3);</code></p>
+</ol>
+<ul>
+<li>map-get($map, $key): 根据key值，返回map中的value。</li>
+<li>map-merge($map1, $map2): 合并两个map。</li>
+<li>map-remove($map, $key): 从map中删除一个key，并返回一个新map。</li>
+<li>map-keys($map): 返回map中所有key。</li>
+<li>map-values($map): 返回map中所有value。</li>
+<li>map-has-key($map, $key): 根据key值，判断map中是否有对应value。</li>
+<li>keywords($args): 返回一个函数的参数，这个参数可以动态设置key和value。</li>
+</ul>
+<ol>
+<li><p>RGBA函数中，颜色可以用颜色缩写或颜色值代替RGB值。</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">color</span>: rgba(<span class="number">#f36</span>, .<span class="number">5</span>);  <span class="attribute">border-color</span>: rgba(orange, .<span class="number">3</span>);</div></pre></td></tr></table></figure>
 </li>
 <li><p>使用[ @import ]引用其他文件，如无后缀则默认为SCSS，带下划线开头的SCSS文件则不另外编译。<br>下列情况会被编译成CSS的<a href="&#39;xxx.css&#39;, &#39;http://xxx&#39;, &#39;url(xxx"> @import </a>‘, 包含媒体查询)。</p>
 </li>
@@ -293,7 +343,7 @@
         <p><span>本文标题:</span><a href="/sass-2/">Sass进阶学习篇</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Yausing 的个人博客">Yausing</a></p>
         <p><span>发布时间:</span>2017年02月08日 - 17时18分</p>
-        <p><span>最后更新:</span>2017年04月20日 - 11时15分</p>
+        <p><span>最后更新:</span>2017年04月20日 - 14时59分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/sass-2/" title="Sass进阶学习篇">http://zhuoyousheng.cn/sass-2/</a>
             <span class="copy-path" data-clipboard-text="原文: http://zhuoyousheng.cn/sass-2/　　作者: Yausing" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -381,7 +431,7 @@
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/angular-plugin-pdf/">Angular插件：PDF在线浏览</a></li><li class="post-list-item"><a class="post-list-link" href="/angular-filter-content/">Angular中自定义filter输出富文本内容</a></li><li class="post-list-item"><a class="post-list-link" href="/angular-http-json/">用Angular的HTTP服务以JSON方式获取数据</a></li><li class="post-list-item"><a class="post-list-link" href="/ps-cut/">前端工程师必备的PS切图技能</a></li><li class="post-list-item"><a class="post-list-link" href="/typescript-1/">TypeScript入门</a></li><li class="post-list-item"><a class="post-list-link" href="/sass-2/">Sass进阶学习篇</a></li><li class="post-list-item"><a class="post-list-link" href="/sass-1/">Sass入门学习篇</a></li><li class="post-list-item"><a class="post-list-link" href="/angularjs-a-confirm/">AngularJs中使用 a 标签弹出确认框</a></li><li class="post-list-item"><a class="post-list-link" href="/duan-she-li/">《断舍离》笔记：通向自由的26个丢弃</a></li><li class="post-list-item"><a class="post-list-link" href="/angular-localresizeimg/">Angular移动端上传压缩图片</a></li><li class="post-list-item"><a class="post-list-link" href="/ng-repeat-private-scope/">ng-repeat的私有作用域scope</a></li><li class="post-list-item"><a class="post-list-link" href="/less-css-introdution/">LESS的简单语法介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/win-add-route/">Win10下CMD添加静态路由</a></li><li class="post-list-item"><a class="post-list-link" href="/wordpress-mail-smtp/">WordPress的邮箱设置 (插件 WP-Mail-SMTP)</a></li><li class="post-list-item"><a class="post-list-link" href="/wordpress-nav-role-menu/">Wordpress中根据用户角色显示菜单</a></li><li class="post-list-item"><a class="post-list-link" href="/wordpress-iplocal-language/">WordPress通过IP归属自动切换选择语言</a></li><li class="post-list-item"><a class="post-list-link" href="/custom-wordpress-fackbook/">自定义分享WordPress到Facebook的内容(Open Graph Protocol)</a></li><li class="post-list-item"><a class="post-list-link" href="/html5-editor/">推荐10个易上手好用的H5网页编辑工具</a></li><li class="post-list-item"><a class="post-list-link" href="/wordpress-redirect-to/">WordPress登录后跳转到指定页面</a></li><li class="post-list-item"><a class="post-list-link" href="/css-white-space/">CSS取消文本换行white-space</a></li><li class="post-list-item"><a class="post-list-link" href="/linux-remind/">在linux中查看磁盘使用空间</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/angular-plugin-pdf/">Angular插件：PDF在线浏览</a></li><li class="post-list-item"><a class="post-list-link" href="/angular-filter-content/">Angular中自定义filter输出富文本内容</a></li><li class="post-list-item"><a class="post-list-link" href="/angular-http-json/">用Angular的HTTP服务以JSON方式获取数据</a></li><li class="post-list-item"><a class="post-list-link" href="/ps-cut/">前端工程师必备的PS切图技能</a></li><li class="post-list-item"><a class="post-list-link" href="/typescript-1/">TypeScript入门</a></li><li class="post-list-item"><a class="post-list-link" href="/sass-2/">Sass进阶学习篇</a></li><li class="post-list-item"><a class="post-list-link" href="/sass-1/">Sass入门学习篇</a></li><li class="post-list-item"><a class="post-list-link" href="/angularjs-a-confirm/">AngularJs中使用 a 标签弹出确认框</a></li><li class="post-list-item"><a class="post-list-link" href="/duan-she-li/">《断舍离》笔记：通向自由的26个丢弃</a></li><li class="post-list-item"><a class="post-list-link" href="/angular-localresizeimg/">Angular移动端上传压缩图片</a></li><li class="post-list-item"><a class="post-list-link" href="/ng-repeat-private-scope/">ng-repeat的私有作用域scope</a></li><li class="post-list-item"><a class="post-list-link" href="/less-css-introdution/">LESS的简单语法介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/win-add-route/">Win10下CMD添加静态路由</a></li><li class="post-list-item"><a class="post-list-link" href="/wordpress-mail-smtp/">WordPress的邮箱设置 (插件 WP-Mail-SMTP)</a></li><li class="post-list-item"><a class="post-list-link" href="/wordpress-nav-role-menu/">Wordpress中根据用户角色显示菜单</a></li><li class="post-list-item"><a class="post-list-link" href="/wordpress-iplocal-language/">WordPress通过IP归属自动切换选择语言</a></li><li class="post-list-item"><a class="post-list-link" href="/custom-wordpress-fackbook/">自定义分享WordPress到Facebook的内容(Open Graph Protocol)</a></li><li class="post-list-item"><a class="post-list-link" href="/html5-editor/">推荐10个易上手好用的H5网页编辑工具</a></li><li class="post-list-item"><a class="post-list-link" href="/wordpress-redirect-to/">WordPress登录后跳转到指定页面</a></li><li class="post-list-item"><a class="post-list-link" href="/css-white-space/">CSS取消文本换行white-space</a></li><li class="post-list-item"><a class="post-list-link" href="/linux-remind/">在linux中查看磁盘使用空间</a></li></ul>
     <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");
