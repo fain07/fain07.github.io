@@ -303,14 +303,20 @@
 
     
         <!--畅言评论-->
-<section id="comments">
-<!--高速版，加载速度快，使用前需测试页面的兼容性-->
-<div id="SOHUCS" sid="127"></div>
 <style>
 #SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .post-wrap-main .area-textarea-e .textarea-fw {
     color: #eee !important;
 }
+#comments{
+	margin:30px !important;
+}
+#SOHUCS, #SOHUCS #SOHU_MAIN{
+	color: #eee !important;
+}
 </style>
+<section id="comments">
+<!--高速版，加载速度快，使用前需测试页面的兼容性-->
+<div id="SOHUCS" sid="127"></div>
 <script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
 <script type="text/javascript">
 window.changyan.api.config({
