@@ -203,18 +203,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="如何在Hexo博客上使用畅言评论插件？"><a href="#如何在Hexo博客上使用畅言评论插件？" class="headerlink" title="如何在Hexo博客上使用畅言评论插件？"></a>如何在Hexo博客上使用畅言评论插件？</h3><p>Hexo默认提供[disqus, duoshuo, youyan]这三个评论插件，如果是要使用畅言的话，就要自己进行一些修改。</p>
-<ol>
-<li><p>在主题的配置文件[_config.yml]中，加上以下语句，其中ID和KEY是你畅言后台中获取的。注意冒号后面的空格。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">changyan:</div><div class="line">  on: true</div><div class="line">  id: &apos;cyszuTRxx&apos;</div><div class="line">  key: &apos;dd699ccdfb5bc856f8533e16906a3dxx&apos;</div><div class="line">  # 是否开启畅言评论，畅言服务在 Web 环境下运行，普通本地环境无法查看，请部署后在线上测试。</div></pre></td></tr></table></figure>
-</li>
-<li><p>打开主题下面的[themes\xxxx\layout\/_partial\article.ejs]，加上畅言的判断代码。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;% <span class="keyword">if</span> (!index &amp;&amp; post.comments)&#123; %&gt;</div><div class="line">    &lt;% <span class="keyword">if</span> (theme.changyan.on) &#123; %&gt;</div><div class="line">        &lt;%- partial(<span class="string">'comments/changyan'</span>) %&gt;</div><div class="line">    &lt;% &#125; %&gt;</div><div class="line">&lt;% &#125; %&gt;</div></pre></td></tr></table></figure>
-</li>
-<li><p>在文件夹[themes\xxxx\layout\/_partial\comments\”]下，加上畅言的模板文件。文件名为[changyan.ejs]</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- themes\xxxx\layout\_partial\comments\changyan.ejs --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">section</span> <span class="attr">id</span>=<span class="string">"comments"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"SOHUCS"</span> <span class="attr">sid</span>=<span class="string">"&lt;%= post.id %&gt;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"https://changyan.sohu.com/upload/changyan.js"</span> &gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="built_in">window</span>.changyan.api.config(&#123;</div><div class="line"><span class="attr">appid</span>: <span class="string">'&lt;%= theme.changyan.id%&gt;'</span>,</div><div class="line"><span class="attr">conf</span>: <span class="string">'&lt;%= theme.changyan.key%&gt;'</span></div><div class="line">&#125;);</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">section</span>&gt;</span></div></pre></td></tr></table></figure></li>
-</ol>
-
+              <h3 id="如何在Hexo博客上使用畅言评论插件？"><a href="#如何在Hexo博客上使用畅言评论插件？" class="headerlink" title="如何在Hexo博客上使用畅言评论插件？"></a>如何在Hexo博客上使用畅言评论插件？</h3><p>Hexo默认提供[disqus, duoshuo, youyan]这三个评论插件，如果是要使用畅言的话，就要自己进行一些修改。<br>
+          
       
       
     </div>
@@ -232,6 +222,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/">HTML</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a  href="/hexo-changyan/#more">查看全部 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
